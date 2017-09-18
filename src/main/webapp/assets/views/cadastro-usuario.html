@@ -1,0 +1,55 @@
+<div class="row mt-5 mb-5">
+    <div class="col-8 offset-md-2 card card-outline-success">
+        <h2 class="text-center">Cadastro de usuário</h2>
+        <hr>
+        <form name="cadastroUsuarioForm" ng-submit="cadastrarUsuario()">
+            <div class="row">
+                <div class="form-group col-6">
+                    <label for="">Nome</label>
+                    <input type="text" class="form-control" ng-model="usuario.nome">
+                </div>
+                <div class="form-group col-6">
+                    <label for="">CPF</label>
+                    <input type="text" class="form-control" ng-model="usuario.cpf" name="cpf" onkeypress="MascaraCPF(cpf)" limit-to="14">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-6">
+                    <label for="">Email</label>
+                    <input type="text" class="form-control" ng-model="usuario.email">
+                </div>
+                <div class="form-group col-6">
+                    <label for="">Telefone</label>
+                    <input type="text" class="form-control" ng-model="usuario.telefone" name="telefone" onkeypress="MascaraTelefone(telefone)"
+                        limit-to="14">
+                </div>
+            </div>
+            <div>
+                <h4>Credenciais</h4>
+                <hr>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Usuário" aria-describedby="idusuario" ng-model="usuario.usuario">
+                    <span class="input-group-addon bg-success" id="idusuario"><i class="fa fa-user" style="color:white"></i></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Senha" aria-describedby="idsenha" ng-model="usuario.senha">
+                    <span class="input-group-addon bg-success" id="idsenha"><i class="fa fa-lock" style="color:white"></i></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Senha de confirmação" aria-describedby="idSenhaConfirmacao" ng-model="usuario.senhaConfirmacao">
+                    <span class="input-group-addon bg-success" id="idSenhaConfirmacao"><i class="fa fa-lock" style="color:white"></i></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="mb-3 btn btn-success float-right" value="Cadastrar">
+            </div>
+        </form>
+    </div>
+    <div growl class="col-2"></div>
+</div>

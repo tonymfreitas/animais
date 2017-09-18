@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="animais">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.css">
+    <link rel="stylesheet" href="assets/css/blocks.css">
+    <link rel="stylesheet" href="assets/css/estilo.css">
+    <link rel="stylesheet" href="assets/css/font-awesome/css/font-awesome.min.css">
+
+    <!-- Scripst diversos -->
+    <script src="assets/js/diversos/jquery.min.js"></script>
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script src="assets/js/diversos/bootstrap.min.js"></script>
+    <script src="assets/js/diversos/owl.carousel.js"></script>
+    <script src="assets/js/diversos/mask-validation.js"></script>
+
+    <!-- Scripst angular -->
+    <script src="assets/js/angular/angular.min.js"></script>
+    <script src="assets/js/angular/angular-route.min.js"></script>
+    <script src="assets/js/angular/angular-growl.js"></script>
+
+    <script src="assets/js/animais-app.js"></script>
+
+
+    <!-- Serviços -->
+    <script src="assets/js/services/requisicoes-service.js"></script>
+    <script src="assets/js/services/clear_mask-service.js"></script>
+
+    <!-- Controllers -->
+    <script src="assets/js/controllers/PrincipalController.js"></script>
+    <script src="assets/js/controllers/IndexController.js"></script>
+    <script src="assets/js/controllers/CadastroAnimalController.js"></script>
+    <script src="assets/js/controllers/LoginController.js"></script>
+    <script src="assets/js/controllers/UsuarioController.js"></script>
+
+    <!-- Configuração -->
+    <script src="assets/js/config/route-config.js"></script>
+    <script src="assets/js/config/url-config.js"></script>
+
+    <!-- Diretivas -->
+    <script src="assets/js/directives/carousel-directive.js"></script>
+    <script src="assets/js/directives/carousel-item-directive.js"></script>
+    <script src="assets/js/directives/limitTo-directive.js"></script>
+
+</head>
+
+<body ng-controller="IndexController">
+
+    <header>
+        <nav class="navbar navbar-toggleable-md navbar-light bg-success">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+            <a href="#">
+                <img class="img-logo img-responsive" src="assets/img/logo.png" alt="Logo">
+            </a>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+                    <a href="#!/animais/login">
+                        <i class="fa fa-sign-in fa-white" style="color:white"></i>
+                    </a>
+                </form>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <ng-view></ng-view>
+    </div>
+</body>
+
+</html>
