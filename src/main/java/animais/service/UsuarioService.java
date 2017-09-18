@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 
 import animais.model.Usuario;
 import animais.model.base.IUsuarioDAO;
+import animais.service.interceptor.TokenResponse;
 
 @Service
 @RequestMapping("/usuario")
@@ -25,8 +26,20 @@ public class UsuarioService {
 	public String novoUsuario(@RequestBody String usuario) {
 		Gson gson = new Gson();
 		Usuario usuarioMapeado = gson.fromJson(usuario, Usuario.class);
+		usuarioMapeado.setSenha(TokenResponse.gerarToken(usuarioMapeado.getSenha()));
 		Long id = usuarioDao.adiciona(usuarioMapeado);
 		String json = gson.toJson(id);
+		return json;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/autenticar", method = RequestMethod.POST)
+	public String autenticar(@RequestBody String usuario) {
+		Gson gson = new Gson();
+		Usuario usuarioMapeado = gson.fromJson(usuario, Usuario.class);
+		usuarioMapeado.setSenha(TokenResponse.gerarToken(usuarioMapeado.getSenha()));
+		Usuario usuarioConsultado = usuarioDao.consultarUsuario(usuarioMapeado);
+		String json = gson.toJson(usuarioConsultado);
 		return json;
 	}
 

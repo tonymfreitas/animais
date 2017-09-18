@@ -32,6 +32,8 @@
     <!-- Serviços -->
     <script src="assets/js/services/requisicoes-service.js"></script>
     <script src="assets/js/services/clear_mask-service.js"></script>
+    <script src="assets/js/services/auth-interceptor.js"></script>
+    <script src="assets/js/services/bau-service.js"></script>
 
     <!-- Controllers -->
     <script src="assets/js/controllers/PrincipalController.js"></script>
@@ -78,9 +80,13 @@
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Search">
                     <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-                    <a href="#!/animais/login">
+                    <a href="#!/animais/login" ng-if="!logado">
                         <i class="fa fa-sign-in fa-white" style="color:white"></i>
                     </a>
+                    <a href="#" ng-if="logado">
+                        <i class="fa fa-sign-out" style="color:white"></i>                       
+                    </a>
+                    <span class="text-primary ml-3">{{nomeUsuario}}</span> 
                 </form>
             </div>
         </nav>

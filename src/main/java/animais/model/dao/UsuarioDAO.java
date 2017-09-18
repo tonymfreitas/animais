@@ -55,4 +55,12 @@ public class UsuarioDAO implements IUsuarioDAO {
 		dao.remove(id);
 	}
 
+	@Transactional
+	public Usuario consultarUsuario(Usuario usuario) {
+		Criteria criteria = dao.getCriteria();
+		criteria.add(Restrictions.eq("usuario", usuario.getUsuario()));
+		criteria.add(Restrictions.eqOrIsNull("senha", usuario.getSenha()));
+		return (Usuario) criteria.uniqueResult();
+	}
+
 }

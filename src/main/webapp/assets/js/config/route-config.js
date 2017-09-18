@@ -1,4 +1,6 @@
-angular.module('animais').config(configurarRotas);
+angular.module('animais')
+.config(interceptor)
+.config(configurarRotas);
 
 function configurarRotas($routeProvider) {
     
@@ -27,4 +29,8 @@ function configurarRotas($routeProvider) {
 
     $routeProvider.otherwise({redirectTo: '/animais'});
 
+}
+
+function interceptor($httpProvider) {
+    $httpProvider.interceptors.push('authInterceptor');
 }
