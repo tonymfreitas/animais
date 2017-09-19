@@ -1,7 +1,7 @@
 angular.module('animais').controller('IndexController', IndexController);
 
 function IndexController($scope, bauService, logoutService) {
-
+    
     function init() {
         $scope.logado = false;
         $scope.nomeUsuario = '';

@@ -84,9 +84,9 @@
                     <a href="#!/animais/login" ng-if="!logado">
                         <i class="fa fa-sign-in fa-white" style="color:white"></i>
                     </a>
-                    <span class="text-primary ml-3 pr-3">{{nomeUsuario}}</span>
+                    <span class="text-white ml-3 pr-3">{{nomeUsuario | uppercase}}</span>
                     <a href="#" ng-if="logado" data-toggle="modal" data-target="#Modal1">
-                        <i class="fa fa-sign-out" style="color:white"></i>                       
+                        <i class="fa fa-sign-out" style="color:white"></i>
                     </a>
                 </form>
             </div>
@@ -105,7 +105,7 @@
             </button>
                     </div>
                     <div class="modal-body">
-                       Deseja sair do sistema?
+                        Deseja sair do sistema?
                     </div>
                     <div class="modal-footer">
                         <button type="button" ng-click="efetuarLogout()" data-dismiss="modal" class="btn btn-success" data-dismiss="Sim">Sim</button>
@@ -116,6 +116,36 @@
         </div>
         <ng-view></ng-view>
     </div>
+    <footer class="footer">
+        <div class="bg-success">
+            <div class="row">
+                <div class="col-6">
+                    <div class="col-6 offset-md-3">
+                        <h4 class="text-white pt-3">Fale conosco</h4>
+                        <form name="contatoForm" class="pb-3">
+                            <input type="text" placeholder="Email" class="form-control">
+                            <textarea placeholder="Insira aqui sua mensagem" name="mensagem" cols="30" rows="5" class="form-control"></textarea>
+                            <input type="submit" value="Enviar mensagem" class="btn btn-secondary mt-2">
+                        </form>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="col-6 offset-md-3">
+                        <h4 class="text-white pt-3">Contato</h4>
+                        <p>Avenida das américas 500, Bl16 - Sl 316</p>
+                        <p>Barra da Tijua - Rio de Janeiro</p>
+                        <p>Cep: 22640-100</p>
+                        <p> Email: doacao.animal@gmail.com</p>
+                        <p>
+                            <i class="fa fa-facebook-official fa-2x" aria-hidden="true" style="color:white"></i>
+                            <i class="ml-3 fa fa-instagram fa-2x" aria-hidden="true" style="color:white"></i>
+                            <i class="ml-3 fa fa-twitter-square fa-2x" aria-hidden="true" style="color:white"></i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
