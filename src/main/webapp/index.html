@@ -34,6 +34,7 @@
     <script src="assets/js/services/clear_mask-service.js"></script>
     <script src="assets/js/services/auth-interceptor.js"></script>
     <script src="assets/js/services/bau-service.js"></script>
+    <script src="assets/js/services/logout-service.js"></script>
 
     <!-- Controllers -->
     <script src="assets/js/controllers/PrincipalController.js"></script>
@@ -83,15 +84,36 @@
                     <a href="#!/animais/login" ng-if="!logado">
                         <i class="fa fa-sign-in fa-white" style="color:white"></i>
                     </a>
-                    <a href="#" ng-if="logado">
+                    <span class="text-primary ml-3 pr-3">{{nomeUsuario}}</span>
+                    <a href="#" ng-if="logado" data-toggle="modal" data-target="#Modal1">
                         <i class="fa fa-sign-out" style="color:white"></i>                       
                     </a>
-                    <span class="text-primary ml-3">{{nomeUsuario}}</span> 
                 </form>
             </div>
         </nav>
     </header>
     <div class="container">
+
+        <!-- MODAL BOOTSTRAP -->
+        <div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="Modal1" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLabel">Logout</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+                    </div>
+                    <div class="modal-body">
+                       Deseja sair do sistema?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" ng-click="efetuarLogout()" data-dismiss="modal" class="btn btn-success" data-dismiss="Sim">Sim</button>
+                        <button type="button" class="btn btn-dabger" data-dismiss="modal">Não</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <ng-view></ng-view>
     </div>
 </body>

@@ -1,15 +1,16 @@
 angular.module('animais').controller('IndexController', IndexController);
 
-function IndexController($scope, bauService) {
+function IndexController($scope, bauService, logoutService) {
 
     function init() {
         $scope.logado = false;
         $scope.nomeUsuario = '';
     }
 
+    init();
+
 
     $scope.$on('usuarioLogado', function (event, args) {
-        // growl.success('Bem vindo ' + args.usuario + '!');
         bauService.set('logado', args.logado);
         bauService.set('usuarioLogado', args.usuario);
         bauService.set('id', args.id);
@@ -19,5 +20,14 @@ function IndexController($scope, bauService) {
         }
     });
 
+    function deslogarView() {
+        $scope.logado = false;
+        $scope.nomeUsuario = '';
+    }
+
+    $scope.efetuarLogout = function () {
+        logoutService.logout();
+        deslogarView();
+    }
 
 }
