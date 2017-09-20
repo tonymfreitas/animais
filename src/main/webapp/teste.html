@@ -14,37 +14,106 @@
 <body>
 
 
-   
-    <footer class="footer">
-        <nav class="navbar navbar-default navbar-fixed-buttom bg-success">
-            <div class="row">
-                <div class="col-6">
-                    <div class="col-6 offset-md-3">
-                        <h4 class="text-white pt-3">Fale conosco</h4>
-                        <form name="contatoForm" class="pb-3">
-                            <input type="text" placeholder="Email" class="form-control">
-                            <textarea placeholder="Insira aqui sua mensagem" name="mensagem" cols="30" rows="5" class="form-control"></textarea>
-                            <input type="submit" value="Enviar mensagem" class="btn btn-secondary mt-2">
-                        </form>
-                    </div>
+    <div class="">
+
+        <header>
+            <nav class="navbar navbar-toggleable-md navbar-light bg-success">
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+                <a href="#">
+                <img class="swing img-logo img-responsive" src="assets/img/logo.png" alt="Logo">
+            </a>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item border-solid active">
+                            <a class="nav-link" href="#">INÍCIO <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item border-solid">
+                            <a class="nav-link" href="#">AMIGOS</a>
+                        </li>
+                        <li class="nav-item border-solid">
+                            <a class="nav-link disabled" href="#"></a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                        <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+                        <a href="#!/animais/login" ng-if="!logado">
+                        <i class="fa fa-sign-in fa-white" style="color:white"></i>
+                    </a>
+                        <span class="text-white ml-3 pr-3">{{nomeUsuario | uppercase}}</span>
+                        <a href="#" ng-if="logado" data-toggle="modal" data-target="#Modal1">
+                        <i class="fa fa-sign-out" style="color:white"></i>
+                    </a>
+                    </form>
                 </div>
-                <div class="col-6">
-                    <div class="col-6 offset-md-3">
-                        <h4 class="text-white pt-3">Contato</h4>
-                        <p>Avenida das américas 500, Bl16 - Sl 316</p>
-                        <p>Barra da Tijua - Rio de Janeiro</p>
-                        <p>Cep: 22640-100</p>
-                        <p> Email: doacao.animal@gmail.com</p>
-                        <p>
-                            <i class="fa fa-facebook-official fa-2x" aria-hidden="true" style="color:white"></i>
-                            <i class="ml-3 fa fa-instagram fa-2x" aria-hidden="true" style="color:white"></i>
-                            <i class="ml-3 fa fa-twitter-square fa-2x" aria-hidden="true" style="color:white"></i>
-                        </p>
+            </nav>
+        </header>
+
+
+        <div class="row mt-5">
+            <div class="col-6 offset-md-3 card card-outline-success">
+                <h2>Login</h2>
+                <hr>
+                <form name="loginForm">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Usuário" aria-describedby="idusuario" ng-model="usuario.usuario">
+                            <span class="input-group-addon bg-success" id="idusuario"><i class="fa fa-user" style="color:white"></i></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Senha" aria-describedby="idsenha" ng-model="usuario.senha">
+                            <span class="input-group-addon bg-success" id="idsenha"><i class="fa fa-lock" style="color:white"></i></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span>
+                            Não está cadastrado?
+                            <a href="#!/animais/cadastrar-usuario" class="text-success">Clique aqui</a>
+                        </span>
+                        <button type="button" class="btn btn-success float-right" ng-click="efetuarLogin()">Logar</button>
+                    </div>
+                </form>
+            </div>
+            <div growl class="col-3"></div>
+        </div>
+
+
+        <footer class="footer">
+            <div class="bg-success">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="col-6 offset-md-3">
+                            <h4 class="text-white pt-3">Fale conosco</h4>
+                            <form name="contatoForm" class="pb-3">
+                                <input type="text" placeholder="Email" class="form-control">
+                                <textarea placeholder="Insira aqui sua mensagem" name="mensagem" cols="30" rows="5" class="form-control"></textarea>
+                                <input type="submit" value="Enviar mensagem" class="btn btn-secondary mt-2">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="col-6 offset-md-3">
+                            <h4 class="text-white pt-3">Contato</h4>
+                            <p>Avenida das américas 500, Bl16 - Sl 316</p>
+                            <p>Barra da Tijua - Rio de Janeiro</p>
+                            <p>Cep: 22640-100</p>
+                            <p> Email: doacao.animal@gmail.com</p>
+                            <p>
+                                <i class="fa fa-facebook-official fa-2x" aria-hidden="true" style="color:white"></i>
+                                <i class="ml-3 fa fa-instagram fa-2x" aria-hidden="true" style="color:white"></i>
+                                <i class="ml-3 fa fa-twitter-square fa-2x" aria-hidden="true" style="color:white"></i>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </nav>
-    </footer>
+        </footer>
 </body>
 
 </html>

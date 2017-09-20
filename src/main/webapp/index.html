@@ -56,26 +56,29 @@
 
 <body ng-controller="IndexController">
 
+
     <header>
         <nav class="navbar navbar-toggleable-md navbar-light bg-success">
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-            <a href="#">
-                <img class="img-logo img-responsive" src="assets/img/logo.png" alt="Logo">
+            <div class="collapse navbar-collapse col-8 offset-md-2" id="navbarSupportedContent">
+                <a href="#">
+                <img class="swing img-logo img-responsive" src="assets/img/logo.png" alt="Logo">
             </a>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <li class="nav-item border-solid active">
+                        <a class="nav-link" href="#">INÍCIO <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                    <li class="nav-item border-solid">
+                        <a class="nav-link" href="#">AMIGOS</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
+                    <li class="nav-item border-solid" ng-if="logado">
+                        <a class="nav-link" href="#">CONFIGURAÇÃO</a>
+                    </li>
+                    <li class="nav-item border-solid">
+                        <a class="nav-link disabled" href="#"></a>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
@@ -93,7 +96,6 @@
         </nav>
     </header>
     <div class="container">
-
         <!-- MODAL BOOTSTRAP -->
         <div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="Modal1" aria-hidden="true">
             <div class="modal-dialog" role="document">
