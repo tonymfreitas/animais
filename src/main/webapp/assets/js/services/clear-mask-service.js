@@ -19,6 +19,14 @@
             var telefoneString = telefone.toString();
             return telefoneString.replace('(','').replace(')','').replace('-','').trim();
         }
+        this.aplicarMaskCpf = function(cpf) {
+            var cpfString = cpf.toString();
+            var part1 = cpf.substring(0,3);
+            var part2 = cpf.substring(3,6);
+            var part3 = cpf.substring(6,9);
+            var part4 = cpf.substring(9,11);
+            return part1 + '.' + part2 + '.' + part3 + '-' + part4;
+        }
     }
 
 })();
