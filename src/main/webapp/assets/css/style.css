@@ -117,3 +117,29 @@ footer {
         -webkit-animation-iteration-count: 1;
         animation-iteration-count: 1;
 }
+
+.dropdown-item:focus, .dropdown-item:hover {
+    color: white;
+    text-decoration: none;
+    background-color: #449d44;
+  }
+
+.clear-borda {
+    border : solid 2px white;
+}
+
+.container-login {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1.25rem;
+}
+
+.vertical-center {
+    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one :-)       */
+    display: flex;
+    align-items: center;
+  }

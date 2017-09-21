@@ -11,9 +11,14 @@
             return $http.post(urlConfig.baseUrl + '/usuario/autenticar', usuario);
         }
 
+        var _listarInformacoesUsuario = function(usuario) {
+            return $http.post(urlConfig.baseUrl + '/usuario/listar-informacoes', usuario);
+        }
+
         return {
             novoUsuario: _novoUsuario,
-            autenticarUsuario: _autenticarUsuario
+            autenticarUsuario: _autenticarUsuario,
+            listarInformacoesUsuario: _listarInformacoesUsuario
         };  
     }
 })();

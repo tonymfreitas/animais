@@ -25,6 +25,11 @@ function configurarRotas($routeProvider) {
         templateUrl: 'assets/views/cadastro-usuario.html',
         controller: 'UsuarioController'
     })
+
+    .when('/animais/cadastrar-voluntario', {
+        templateUrl: 'assets/views/cadastro-voluntario.html',
+        controller: 'CadastroVoluntarioController'
+    })
     ;
 
     $routeProvider.otherwise({redirectTo: '/animais'});

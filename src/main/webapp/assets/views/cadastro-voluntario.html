@@ -1,0 +1,53 @@
+<div class="vertical-center">
+    <div class="container">
+        <div class="row ">
+            <div class="col-8 offset-md-2 card card-outline-success">
+                <h2 class="text-center">Novo voluntário</h2>
+                <hr>
+                <form name="cadastroUsuarioForm" ng-submit="">
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="">Nome</label>
+                            <input type="text" class="form-control" ng-model="usuario.nome" disabled>
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="">CPF</label>
+                            <input type="text" class="form-control" ng-model="usuario.cpf" name="cpf" onkeypress="MascaraCPF(cpf)" limit-to="14" disabled>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="">Email</label>
+                            <input type="text" class="form-control" ng-model="usuario.email" disabled>
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="">Telefone</label>
+                            <input type="text" class="form-control" ng-model="usuario.telefone" name="telefone" onkeypress="MascaraTelefone(telefone)"
+                                limit-to="14" disabled>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Interesses</h4>
+                        <hr>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Porque deseja ser um voluntário?</label>
+                        <input type="text" class="form-control" aria-describedby="idusuario" ng-model="usuario.usuario">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Me interesso por:</label>
+                        <br>
+                        <div class="form-check form-check-inline" ng-repeat="animal in animais">
+                                <label class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description">{{animal}}</span>
+                                      </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div growl class="col-2"></div>
+        </div>
+    </div>
+</div>
