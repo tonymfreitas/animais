@@ -1,6 +1,6 @@
 angular.module('animais').controller('LoginController', LoginController);
 
-function LoginController($scope, requisicoesService, growl, $location) {
+function LoginController($scope, requisicoesService, bauService, growl, $location) {
 
     function init() {
         $scope.usuario = {
@@ -25,11 +25,20 @@ function LoginController($scope, requisicoesService, growl, $location) {
                 } else {
                     $scope.$emit('usuarioLogado', { logado: true, usuario: response.data.usuario, id: response.data.id });
                     localStorage.setItem('token', response.data.senha);
-                    $location.path('#!/animais');
+                    mudarRota();
                 }
             }, function (error) {
                 console.log(error);
             });
+    }
+
+    function mudarRota() {
+        var voluntario = bauService.get('cadastrar-voluntario');
+        if(voluntario) {
+            $location.path('/animais/cadastrar-voluntario');
+        } else {
+            $location.path('/animais');
+        }
     }
 
     function verificarAlgumCampoVazio() {

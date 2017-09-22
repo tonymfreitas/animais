@@ -23,6 +23,7 @@ function IndexController($scope, bauService, logoutService) {
     function deslogarView() {
         $scope.logado = false;
         $scope.nomeUsuario = '';
+        bauService.deletar('cadastrar-voluntario');
     }
 
     $scope.efetuarLogout = function () {

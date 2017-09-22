@@ -97,21 +97,43 @@
                                     limit-to="14" disabled>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="">Endereço</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="">CEP</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="">Cidade</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="">Bairro</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
                         <div>
                             <h4>Interesses</h4>
                             <hr>
                         </div>
                         <div class="form-group">
                             <label for="">Porque deseja ser um voluntário?</label>
-                            <input type="text" class="form-control" aria-describedby="idusuario" ng-model="usuario.usuario">
+                            <input type="text" class="form-control" aria-describedby="idusuario" ng-model="">
                         </div>
                         <div class="form-group">
                             <label for="">Me interesso por:</label>
                             <br>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> 1
-                                        </label>
+                            <div class="form-check form-check-inline" ng-repeat="animal in animais">
+                                <label class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description">{{animal}}</span>
+                                      </label>
                             </div>
                         </div>
                     </form>

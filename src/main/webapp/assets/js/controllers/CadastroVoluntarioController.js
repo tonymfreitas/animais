@@ -22,8 +22,8 @@ function CadastroVoluntarioController($scope, growl, bauService, requisicoesServ
     }
 
     function aplicarMascaras() {
-        MascaraCPF($scope.usuario.cpf);
-        MascaraTelefone($scope.usuario.telefone);
+        $scope.usuario.cpf = aplicarMascaraCpf($scope.usuario.cpf);
+        $scope.usuario.telefone = aplicarMascaraTelefone($scope.usuario.telefone);
     }
 
 
@@ -31,10 +31,15 @@ function CadastroVoluntarioController($scope, growl, bauService, requisicoesServ
         if (localStorage.getItem('token')) {
             $scope.animais = [
                 'Cachorro',
-                'Gato'
+                'Gato',
+                'Ramister',
+                'Coelho',
+                'Papagaio',
+                'Outros'
             ]
             carregarInformacoesUsuario();
         } else {
+            bauService.set('cadastrar-voluntario', true);
             $location.path('/animais/login');
         }
     }

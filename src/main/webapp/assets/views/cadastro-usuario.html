@@ -26,6 +26,26 @@
                                 limit-to="14">
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="">Endereço</label>
+                            <input type="text" class="form-control" ng-model="usuario.endereco.descricao">
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="">CEP</label>
+                            <input type="text" class="form-control" ng-model="usuario.endereco.cep" name="cep" onkeypress="MascaraCEP(cep)">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="">Cidade</label>
+                            <input type="text" class="form-control" ng-model="usuario.endereco.cidade">
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="">Bairro</label>
+                            <input type="text" class="form-control" ng-model="usuario.endereco.bairro">
+                        </div>
+                    </div>
                     <div>
                         <h4>Credenciais</h4>
                         <hr>
@@ -49,7 +69,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="mb-3 btn btn-success float-right" value="Cadastrar">
+                        <input type="submit" class="mb-3 btn btn-outline-success float-right" value="Cadastrar">
                     </div>
                 </form>
             </div>
