@@ -36,7 +36,7 @@ public class UsuarioDAO implements IUsuarioDAO {
 	@Transactional
 	public Usuario busca(Long id) {
 		Criteria criteria = dao.getCriteria();
-		criteria.add(Restrictions.eq("idUsuario", id));
+		criteria.add(Restrictions.eq("id", id));
 		return (Usuario) criteria.uniqueResult();
 	}
 

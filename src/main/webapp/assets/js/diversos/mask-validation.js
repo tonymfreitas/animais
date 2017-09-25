@@ -24,7 +24,7 @@ function MascaraCNPJ(cnpj) {
 } */
 
 //adiciona mascara de cep
-function MascaraCep(cep) {
+function MascaraCEP(cep) {
         if (mascaraInteiro(cep) == false) {
                 event.returnValue = false;
         }
@@ -151,6 +151,21 @@ function ValidarCNPJ(ObjCnpj) {
                 return true;
         }
 
+}
+
+function aplicarMascaraCpf(cpf) {
+        var parte1 = cpf.substring(0,3);
+        var parte2 = cpf.substring(3,6);
+        var parte3 = cpf.substring(6,9);
+        var parte4 = cpf.substring(9,11);
+        return parte1 + '.' + parte2 + '.' + parte3 + '-' + parte4;
+}
+
+function aplicarMascaraTelefone(telefone) {
+        var parte1 = telefone.substring(0,2);
+        var parte2 = telefone.substring(2,7);
+        var parte3 = telefone.substring(7,11);
+        return '(' + parte1 + ')' + parte2 + '-' + parte3;
 }
 
 //formata de forma generica os campos

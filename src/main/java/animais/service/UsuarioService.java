@@ -42,5 +42,15 @@ public class UsuarioService {
 		String json = gson.toJson(usuarioConsultado);
 		return json;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/listar-informacoes", method = RequestMethod.POST)
+	public String listarInformacoes(@RequestBody String usuario) {
+		Gson gson = new Gson();
+		Usuario usuarioMapeado = gson.fromJson(usuario, Usuario.class);
+		Usuario usuarioConsultado = usuarioDao.busca(usuarioMapeado.getId());
+		String json = gson.toJson(usuarioConsultado);
+		return json;
+	}
 
 }

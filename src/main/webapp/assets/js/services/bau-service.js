@@ -11,6 +11,9 @@
             },
             get: function (key) {
                 return bau[key];
+            },
+            deletar: function (key) {
+                return delete bau[key];
             }
         }
 

@@ -93,6 +93,7 @@ function UsuarioController($scope, requisicoesService, clearMaskService, growl) 
     function clearMasks() {
         $scope.usuario.cpf = clearMaskService.clearMaskCpf($scope.usuario.cpf);
         $scope.usuario.telefone = clearMaskService.clearMaskTelefone($scope.usuario.telefone);
+        $scope.usuario.endereco.cep = clearMaskService.clearMaskCep($scope.usuario.endereco.cep);
     }
 
 }
