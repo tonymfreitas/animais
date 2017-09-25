@@ -2,177 +2,24 @@
 <html lang="en">
 
 <head>
-    <title></title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title> File API </title>
 
-    <!-- CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.css">
-    <link rel="stylesheet" href="assets/css/blocks.css">
-    <link rel="stylesheet" href="assets/css/estilo.css">
-    <link rel="stylesheet" href="assets/css/font-awesome/css/font-awesome.min.css">
-
-    <!-- Scripst diversos -->
-    <script src="assets/js/diversos/jquery.min.js"></script>
-    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
-    <script src="assets/js/diversos/bootstrap.min.js"></script>
-    <script src="assets/js/diversos/owl.carousel.js"></script>
-    <script src="assets/js/diversos/mask-validation.js"></script>
-
+    
 </head>
+<corpo>
+    <div id="page-wrapper">
 
-<body>
-
-    <header>
-        <nav class="navbar navbar-toggleable-md navbar-light bg-success">
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-            <a href="#">
-                <img class="swing img-logo img-responsive" src="assets/img/logo.png" alt="Logo">
-            </a>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item border-solid active">
-                        <a class="nav-link" href="#">INÍCIO <span class="sr-only">(current)</span></a>
-                    </li>
-                    <div class="dropdown">
-                        <li class="nav-item border-solid" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <a class="nav-link" href="#">AMIGOS</a>
-                        </li>
-                        <div class="dropdown-menu bg-success clear-borda" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </div>
-                    <li class="nav-item border-solid">
-                        <a class="nav-link disabled" href="#"></a>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-                    <a href="#!/animais/login" ng-if="!logado">
-                        <i class="fa fa-sign-in fa-white" style="color:white"></i>
-                    </a>
-                    <span class="text-white ml-3 pr-3">{{nomeUsuario | uppercase}}</span>
-                    <a href="#" ng-if="logado" data-toggle="modal" data-target="#Modal1">
-                        <i class="fa fa-sign-out" style="color:white"></i>
-                    </a>
-                </form>
-            </div>
-        </nav>
-    </header>
-
-    <div class="vertical-center">
-        <div class="container">
-            <div class="row ">
-                <div class="col-8 offset-md-2 card card-outline-success">
-                    <h2 class="text-center">Novo voluntário</h2>
-                    <hr>
-                    <form name="cadastroUsuarioForm" ng-submit="">
-                        <div class="row">
-                            <div class="form-group col-6">
-                                <label for="">Nome</label>
-                                <input type="text" class="form-control" ng-model="usuario.nome" disabled>
-                            </div>
-                            <div class="form-group col-6">
-                                <label for="">CPF</label>
-                                <input type="text" class="form-control" ng-model="usuario.cpf" name="cpf" onkeypress="MascaraCPF(cpf)" limit-to="14" disabled>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-6">
-                                <label for="">Email</label>
-                                <input type="text" class="form-control" ng-model="usuario.email" disabled>
-                            </div>
-                            <div class="form-group col-6">
-                                <label for="">Telefone</label>
-                                <input type="text" class="form-control" ng-model="usuario.telefone" name="telefone" onkeypress="MascaraTelefone(telefone)"
-                                    limit-to="14" disabled>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-6">
-                                <label for="">Endereço</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group col-6">
-                                <label for="">CEP</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-6">
-                                <label for="">Cidade</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group col-6">
-                                <label for="">Bairro</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div>
-                            <h4>Interesses</h4>
-                            <hr>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Porque deseja ser um voluntário?</label>
-                            <input type="text" class="form-control" aria-describedby="idusuario" ng-model="">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Me interesso por:</label>
-                            <br>
-                            <div class="form-check form-check-inline" ng-repeat="animal in animais">
-                                <label class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input">
-                                        <span class="custom-control-indicator"></span>
-                                        <span class="custom-control-description">{{animal}}</span>
-                                      </label>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div growl class="col-2"></div>
-            </div>
+        <h1> Leitor de arquivos de imagem </h1>
+        <div>
+            Selecione um arquivo de imagem:
+            <input type="file" id="fileInput">
         </div>
+        <div id="fileDisplayArea"> </div>
+
     </div>
 
-    <footer class="footer">
-        <div class="bg-success">
-            <div class="row">
-                <div class="col-6">
-                    <div class="col-6 offset-md-3">
-                        <h4 class="text-white pt-3">Fale conosco</h4>
-                        <form name="contatoForm" class="pb-3">
-                            <input type="text" placeholder="Email" class="form-control">
-                            <textarea placeholder="Insira aqui sua mensagem" name="mensagem" cols="30" rows="5" class="form-control"></textarea>
-                            <input type="submit" value="Enviar mensagem" class="btn btn-secondary mt-2">
-                        </form>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="col-6 offset-md-3">
-                        <h4 class="text-white pt-3">Contato</h4>
-                        <p>Avenida das américas 500, Bl16 - Sl 316</p>
-                        <p>Barra da Tijua - Rio de Janeiro</p>
-                        <p>Cep: 22640-100</p>
-                        <p> Email: doacao.animal@gmail.com</p>
-                        <p>
-                            <i class="fa fa-facebook-official fa-2x" aria-hidden="true" style="color:white"></i>
-                            <i class="ml-3 fa fa-instagram fa-2x" aria-hidden="true" style="color:white"></i>
-                            <i class="ml-3 fa fa-twitter-square fa-2x" aria-hidden="true" style="color:white"></i>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-</body>
+ <script src="assets/js/teste.js"></script>
+    </body>
 
 </html>

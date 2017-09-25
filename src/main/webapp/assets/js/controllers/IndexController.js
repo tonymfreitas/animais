@@ -1,7 +1,7 @@
 angular.module('animais').controller('IndexController', IndexController);
 
-function IndexController($scope, bauService, logoutService) {
-    
+function IndexController($scope, growl, bauService, logoutService, requisicoesService, $location) {
+
     function init() {
         $scope.logado = false;
         $scope.nomeUsuario = '';
@@ -29,6 +29,23 @@ function IndexController($scope, bauService, logoutService) {
     $scope.efetuarLogout = function () {
         logoutService.logout();
         deslogarView();
+    }
+
+    $scope.consultarVoluntarioExistente = function() {
+        var usuario = {
+            id: bauService.get('id')
+        }
+        requisicoesService.consultarVoluntario(usuario)
+            .then(function (response) {
+                if (response.data !== null && response.data !== '') {
+                    growl.info('Este usuário ja é um voluntário!!');
+                } else {
+                   $location.path('/animais/cadastrar-voluntario');
+                }
+            }, function (error) {
+                console.log(error);
+                return false;
+            });
     }
 
 }

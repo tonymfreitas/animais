@@ -4,7 +4,7 @@ $(function () {
     });
 });
 
-angular.module('animais', ['ngRoute', 'angular-growl'])
+angular.module('animais', ['ngRoute', 'angular-growl', 'base64'])
     .config(['growlProvider', function (growlProvider) {
         growlProvider.globalTimeToLive(5000);
         growlProvider.globalPosition('top-right');

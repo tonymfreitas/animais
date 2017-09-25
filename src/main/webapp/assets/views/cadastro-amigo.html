@@ -47,8 +47,8 @@
                         </div>
                         <div class="form-group col-6">
                             <label for="">Foto</label>
-                            <input type="file" name="foto" ng-model="amigo.foto" ng-change="alterarFoto()">
-                            <img ng-src="{{imgPreview}}" alt="">
+                            <input type="file" file-input>
+                            <div class="preview"><img src="{{imageUrl}}" alt=""></div>
                         </div>
                     </div>
                 </form>
