@@ -36,6 +36,7 @@
     <script src="assets/js/services/auth-interceptor.js"></script>
     <script src="assets/js/services/bau-service.js"></script>
     <script src="assets/js/services/logout-service.js"></script>
+    <script src="assets/js/services/route-service.js"></script>
 
     <!-- Controllers -->
     <script src="assets/js/controllers/PrincipalController.js"></script>
@@ -54,6 +55,7 @@
     <script src="assets/js/directives/carousel-item-directive.js"></script>
     <script src="assets/js/directives/limitTo-directive.js"></script>
     <script src="assets/js/directives/file-select-directive.js"></script>
+    <script src="assets/js/directives/ifLoading-directive.js"></script>
 
 </head>
 
@@ -123,6 +125,13 @@
                         <button type="button" class="btn btn-dabger" data-dismiss="modal">Não</button>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-3">
+                <p class="text-center text-muted" if-loading>
+                    <span class="fa fa-spinner fa-spin fa-3x"></span>
+                </p>
             </div>
         </div>
         <ng-view></ng-view>

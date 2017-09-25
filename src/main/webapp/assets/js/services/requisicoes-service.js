@@ -23,12 +23,17 @@
             return $http.post(urlConfig.baseUrl + '/voluntario/consultar', usuario);
         }
 
+        var _novoAnimal = function(animal) {
+            return $http.post(urlConfig.baseUrl + '/animal/novo', animal);
+        }
+
         return {
             novoUsuario: _novoUsuario,
             autenticarUsuario: _autenticarUsuario,
             listarInformacoesUsuario: _listarInformacoesUsuario,
             novoVoluntario: _novoVoluntario,
-            consultarVoluntario: _consultarVoluntario
+            consultarVoluntario: _consultarVoluntario,
+            novoAnimal: _novoAnimal
         };  
     }
 })();

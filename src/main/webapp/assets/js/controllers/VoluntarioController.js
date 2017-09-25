@@ -1,6 +1,6 @@
 angular.module('animais').controller('VoluntarioController', VoluntarioController);
 
-function VoluntarioController($scope, growl, bauService, requisicoesService, $location) {
+function VoluntarioController($scope, growl, bauService, requisicoesService, $location, routeService) {
 
     function carregarInformacoesUsuario() {
         var id = bauService.get('id');
@@ -60,6 +60,7 @@ function VoluntarioController($scope, growl, bauService, requisicoesService, $lo
             .then(function (response) {
                 if (response.data !== null && response.data !== '') {
                     growl.success('Parabens ' + $scope.usuario.usuario + ' você acaba de ser tornar um voluntário!!');
+                    routeService.mudarRotaTimeout('/animais');
                 } else {
                     growl.error('Falha na solicitação');
                 }
