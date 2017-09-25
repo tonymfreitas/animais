@@ -10,6 +10,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import animais.model.Usuario;
 import animais.model.Voluntario;
 import animais.model.base.IVoluntarioDAO;
 
@@ -54,6 +55,13 @@ public class VoluntarioDAO implements IVoluntarioDAO {
 	@Transactional
 	public void atualiza(Voluntario t) {
 		dao.atualiza(t);
+	}
+
+	@Transactional
+	public Voluntario consultarVoluntario(Usuario usuario) {
+		Criteria criteria = dao.getCriteria();
+		criteria.add(Restrictions.eq("usuario.id", usuario.getId()));
+		return (Voluntario) criteria.uniqueResult();
 	}
 	
 	

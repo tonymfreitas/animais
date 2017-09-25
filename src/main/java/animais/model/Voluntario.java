@@ -24,7 +24,7 @@ public class Voluntario {
 	private String interesse;
 	
 	@OneToOne
-	@JoinColumn(name = "idusuario")
+	@JoinColumn(name = "idusuario", unique = true)
 	private Usuario usuario;
 	
 	@LazyCollection(LazyCollectionOption.FALSE)

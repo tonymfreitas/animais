@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 
+import animais.model.Usuario;
 import animais.model.Voluntario;
 import animais.model.base.IVoluntarioDAO;
 
@@ -22,11 +23,21 @@ public class VoluntarioService {
 
 	@ResponseBody
 	@RequestMapping(value = "/novo", method = RequestMethod.POST)
-	public String novoUsuario(@RequestBody String voluntario) {
+	public String novoVoluntario(@RequestBody String voluntario) {
 		Gson gson = new Gson();
 		Voluntario voluntarioMapeado = gson.fromJson(voluntario, Voluntario.class);
 		Long id = voluntarioDao.adiciona(voluntarioMapeado);
 		String json = gson.toJson(id);
+		return json;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/consultar", method = RequestMethod.POST)
+	public String consultarVoluntario(@RequestBody String usuario) {
+		Gson gson = new Gson();
+		Usuario usuarioMapeado = gson.fromJson(usuario, Usuario.class);
+		Voluntario voluntarioConsultado = voluntarioDao.consultarVoluntario(usuarioMapeado);
+		String json = gson.toJson(voluntarioConsultado);
 		return json;
 	}
 	
