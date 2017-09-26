@@ -1,12 +1,12 @@
 angular.module('animais').controller('AnimalController', AnimalController);
 
-function AnimalController($scope, $base64, requisicoesService, growl) {
+function AnimalController($scope, $base64, requisicoesService, growl, fileUploadService) {
 
     var files = event.target.files;
     var reader = new FileReader();
 
     reader.addEventListener("load", function () {
-        $scope.amigo.foto = reader.result;
+        $scope.fotoPreview = reader.result;
     }, false);
 
     if (files) {
@@ -14,11 +14,21 @@ function AnimalController($scope, $base64, requisicoesService, growl) {
     }
 
     $scope.novoAnimal = function () {
-        $scope.amigo.dtnascimento = $scope.amigo.dtnascimento.replace('/','').replace('/','');
-        requisicoesService.novoAnimal($scope.animal)
+        var config = {
+            transformRequest: angular.identity,
+            headers: {
+                'Content-Type': undefined
+            }
+        };
+        $scope.animal.dtnascimento = new Date($scope.animal.dtnascimento);
+        var formData = fileUploadService.uploadFileToUrl('animal', $scope.animal, $scope.myFile);
+        requisicoesService.novoAnimal(formData, config)
             .then(function (response) {
-                if(response !== null && response !== '') {
-                    growl.success($scope.amigo.nome + ' foi cadastrado com sucesso');
+                if (response !== null && response !== '') {
+                    growl.success($scope.animal.nome + ' foi cadastrado com sucesso');
+                    $scope.animal = null;
+                    $scope.myFile = null;
+                    $scope.fotoPreview = null;
                 } else {
                     growl.error('Falha ao cadastrar um amigo');
                 }

@@ -1,6 +1,6 @@
 angular.module('animais').controller('PrincipalController', PrincipalController);
 
-function PrincipalController($scope) {
+function PrincipalController($scope, requisicoesService, bauService, $location) {
 
     $scope.fotos = [
         { nome: 'Gorila', url: 'http://www.fundosanimais.com/Imagens/gorila.jpg' },
@@ -20,6 +20,32 @@ function PrincipalController($scope) {
         'assets/img/logo-tvanhanguera.png',
         'assets/img/logo-tvcultura.png'
     ]
+
+    function init() {
+        buscarAnimais();
+    }
+
+    init();
+
+    $scope.enviarAnimalDetalhe = function(animal) {
+        bauService.set('animal-detalhe', animal);
+        $location.path('/animais/detalhes');
+    }
+
+    function buscarAnimais() {
+        requisicoesService.listarTodosAnimais()
+            .then(function (response) {
+                if (response.data !== null && response.data !== '') {
+                    $scope.animais = response.data;
+                } else {
+                    console.log('Nenhum animal cadastrado');
+                }
+            }, function (error) {
+                console.log(error);
+            });
+    }
+
+
 
 
 }

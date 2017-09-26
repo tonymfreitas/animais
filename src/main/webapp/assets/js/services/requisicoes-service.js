@@ -23,8 +23,12 @@
             return $http.post(urlConfig.baseUrl + '/voluntario/consultar', usuario);
         }
 
-        var _novoAnimal = function(animal) {
-            return $http.post(urlConfig.baseUrl + '/animal/novo', animal);
+        var _novoAnimal = function(animal, config) {
+            return $http.post(urlConfig.baseUrl + '/animal/novo', animal, config);
+        }
+
+        var _listarTodosAnimais = function() {
+            return $http.get(urlConfig.baseUrl + '/animal/listar-todos');
         }
 
         return {
@@ -33,7 +37,8 @@
             listarInformacoesUsuario: _listarInformacoesUsuario,
             novoVoluntario: _novoVoluntario,
             consultarVoluntario: _consultarVoluntario,
-            novoAnimal: _novoAnimal
+            novoAnimal: _novoAnimal,
+            listarTodosAnimais: _listarTodosAnimais
         };  
     }
 })();

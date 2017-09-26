@@ -10,26 +10,26 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import animais.model.Amigo;
-import animais.model.base.IAmigoDAO;
+import animais.model.Animal;
+import animais.model.base.IAnimalDAO;
 
 @Repository
-public class AmigoDAO implements IAmigoDAO {
+public class AnimalDAO implements IAnimalDAO {
 
-	private final GenericDAO<Amigo, Long> dao;
+	private final GenericDAO<Animal, Long> dao;
 
 	@Autowired
-	public AmigoDAO(final SessionFactory factory) {
-		dao = new GenericDAO<Amigo, Long>(factory, Amigo.class);
+	public AnimalDAO(final SessionFactory factory) {
+		dao = new GenericDAO<Animal, Long>(factory, Animal.class);
 	}
 
 	@Transactional
-	public Long adiciona(Amigo t) {
+	public Long adiciona(Animal t) {
 		return dao.adiciona(t);
 	}
 
 	@Transactional
-	public void remove(Amigo t) {
+	public void remove(Animal t) {
 		dao.remove(t);
 	}
 
@@ -40,19 +40,19 @@ public class AmigoDAO implements IAmigoDAO {
 	}
 
 	@Transactional
-	public Amigo busca(Long id) {
+	public Animal busca(Long id) {
 		Criteria criteria = dao.getCriteria();
 		criteria.add(Restrictions.eq("id", id));
-		return (Amigo) criteria.uniqueResult();
+		return (Animal) criteria.uniqueResult();
 	}
 
 	@Transactional
-	public List<Amigo> lista() {
+	public List<Animal> lista() {
 		return dao.lista();
 	}
 
 	@Transactional
-	public void atualiza(Amigo t) {
+	public void atualiza(Animal t) {
 		dao.atualiza(t);
 	}
 

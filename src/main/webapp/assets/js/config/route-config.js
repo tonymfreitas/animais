@@ -12,10 +12,15 @@ function configurarRotas($routeProvider) {
     })
 
     .when('/animais/cadastrar', {
-        templateUrl: 'assets/views/cadastro-amigo.html',
+        templateUrl: 'assets/views/animais/cadastro.html',
         controller: 'AnimalController'
     })
     
+    .when('/animais/detalhes', {
+        templateUrl: 'assets/views/animais/detalhes.html',
+        controller: 'AnimalDetalheController'
+    })
+
     .when('/animais/login', {
         templateUrl: 'assets/views/login.html',
         controller: 'LoginController'

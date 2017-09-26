@@ -4,36 +4,36 @@
             <div class="col-8 offset-md-2 card card-outline-success">
                 <h2 class="text-center">Novo amigo</h2>
                 <hr>
-                <form name="cadastroAmigoForm" ng-submit="novoAnimal()">
+                <form name="cadastroAnimalForm" ng-submit="novoAnimal()">
                     <div class="row">
                         <div class="form-group col-6">
                             <label for="">Nome</label>
-                            <input type="text" name="nome" ng-model="amigo.nome" class="form-control">
+                            <input type="text" name="nome" ng-model="animal.nome" class="form-control">
                         </div>
                         <div class="form-group col-6">
                             <label for="">Raça</label>
-                            <input type="text" name="raca" ng-model="amigo.raca" class="form-control">
+                            <input type="text" name="raca" ng-model="animal.raca" class="form-control">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-6">
                             <label for="">Peso</label>
-                            <input type="text" name="peso" ng-model="amigo.peso" class="form-control">
+                            <input type="text" name="peso" ng-model="animal.peso" class="form-control">
                         </div>
                         <div class="form-group col-6">
                             <label for="">Cor</label>
-                            <input type="text" name="cor" ng-model="amigo.cor" class="form-control">
+                            <input type="text" name="cor" ng-model="animal.cor" class="form-control">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-6">
                             <label for="">Data de nascimento</label>
-                            <input type="text" name="dtnascimento" ng-model="amigo.dtnascimento" limit-to="10" onkeypress="MascaraData(dtnascimento)"
+                            <input type="text" name="dtnascimento" ng-model="animal.dtnascimento" limit-to="10" onkeypress="MascaraData(dtnascimento)"
                                 class="form-control">
                         </div>
                         <div class="form-group col-6">
                             <label for="">Sexo</label>
-                            <select name="selectSexo" ng-model="amigo.sexo" class="form-control">
+                            <select name="selectSexo" ng-model="animal.sexo" class="form-control">
                                 <option value="M">M</option>
                                 <option value="F">F</option>
                             </select>
@@ -42,18 +42,20 @@
                     <div class="row">
                         <div class="form-group col-6">
                             <label for="">Características / observações</label>
-                            <textarea name="observacao" id="" cols="30" rows="10" ng-model="amigo.observacao" class="form-control">
+                            <textarea name="observacao" id="" cols="30" rows="10" ng-model="animal.observacao" class="form-control">
 
                             </textarea>
                         </div>
                         <div class="form-group col-6">
                             <label for="">Foto</label>
-                            <input type="file" file-input>
-                            <div class="preview"><img src="{{amigo.foto}}" alt="" style="width:200px;height:200px"></div>
+                            <input type="file" name="foto" file-upload="myFile" file-input>
+                            <div class="preview"><img src="{{fotoPreview}}" alt="" style="width:200px;height:200px"></div>
                         </div>
                     </div>
                     <div class="row">
-                        <input type="submit" class="btn btn-outline-success float-right">
+                        <div class="form-group col-12">
+                            <input type="submit" class="btn btn-outline-success float-right mb-3">
+                        </div>
                     </div>
                 </form>
             </div>

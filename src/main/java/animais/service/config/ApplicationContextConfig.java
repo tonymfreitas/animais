@@ -17,6 +17,7 @@ import org.springframework.core.type.filter.AnnotationTypeFilter;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 @Configuration
 @ComponentScan(basePackages = "animais")
@@ -29,7 +30,7 @@ public class ApplicationContextConfig {
 		dataSource.setDriverClassName("org.postgresql.Driver");
 		dataSource.setUrl("jdbc:postgresql://localhost:5432/animais");
 		dataSource.setUsername("postgres");
-		dataSource.setPassword("aula321");
+		dataSource.setPassword("postgres");
 		return dataSource;
 	}
 
@@ -77,5 +78,16 @@ public class ApplicationContextConfig {
 	@Bean(name = "transactionManager")
 	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
 		return new HibernateTransactionManager(sessionFactory);
+	}
+	
+	@Autowired
+	@Bean(name="multipartResolver")
+	public CommonsMultipartResolver getMultipartResolver(){
+		long tamanhoMaximoUpload;
+		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+		//alteramos o tamanho do upload de cada arquivo para 256MB(20 * 1024 * 1024)
+		tamanhoMaximoUpload =  (long) (256.0 * 1024.0 * 1024.0);
+		multipartResolver.setMaxUploadSize(tamanhoMaximoUpload);
+		return multipartResolver;
 	}
 }
