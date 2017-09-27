@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -16,6 +18,10 @@ public class Animal {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long id;
+	
+	@OneToOne
+	@JoinColumn(name = "idusuario", unique = true)
+	private Usuario usuario;
 	
 	@Column(name="nome", length=150)
 	private String nome;
@@ -91,6 +97,9 @@ public class Animal {
 	}
 	public void setPeso(double peso) {
 		this.peso = peso;
+	}
+	public Usuario getUsuario() {
+		return usuario;
 	}
 	
 }

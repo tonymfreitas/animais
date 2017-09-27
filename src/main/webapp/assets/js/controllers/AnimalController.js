@@ -1,6 +1,6 @@
 angular.module('animais').controller('AnimalController', AnimalController);
 
-function AnimalController($scope, $base64, requisicoesService, growl, fileUploadService) {
+function AnimalController($scope, $base64, requisicoesService, growl, fileUploadService, bauService) {
 
     var files = event.target.files;
     var reader = new FileReader();
@@ -21,6 +21,9 @@ function AnimalController($scope, $base64, requisicoesService, growl, fileUpload
             }
         };
         $scope.animal.dtnascimento = new Date($scope.animal.dtnascimento);
+        $scope.animal.usuario = {
+            id: bauService.get('id')
+        }
         var formData = fileUploadService.uploadFileToUrl('animal', $scope.animal, $scope.myFile);
         requisicoesService.novoAnimal(formData, config)
             .then(function (response) {

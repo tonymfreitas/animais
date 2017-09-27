@@ -2,8 +2,62 @@
     <div class="col-12">
         <h1>{{animal.nome}}</h1>
         <hr>
-        <div>
-            <img src="data:image/png;base64,{{animal.foto}}" alt="">
+        <div class="row">
+            <div class="col-6">
+                <img class="rounded d-block img-thumbnail" src="data:image/png;base64,{{animal.foto}}" alt="" style="width:500px;height:300px">
+            </div>
+
+            <div class="my-auto col-6">
+                {{animal.observacao}}
+            </div>
+            <div class="col-12">
+                <div class="float-right">
+                    <label>
+                                <strong>Data de nascimento: </strong>
+                                {{animal.dtnascimento | date : "dd/MM/yyyy"}}
+                            </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 mt-4">
+        <h2>Características</h2>
+        <hr>
+        <div class="row">
+            <div class="col-3">
+                <h6>Raça</h6>
+                <label>{{animal.raca}}</label>
+            </div>
+            <div class="col-3">
+                <h6>Peso</h6>
+                <label>{{animal.peso}} kg</label>
+            </div>
+            <div class="col-3">
+                <h6>Cor</h6>
+                <label>{{animal.cor}}</label>
+            </div>
+            <div class="col-3">
+                <h6>Sexo</h6>
+                <label>{{animal.sexo}}</label>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 mt-4 mb-4">
+        <h2>Responsável</h2>
+        <hr>
+        <div class="row">
+            <div class="col-3">
+                <h6>Tutor: </h6>
+                <label>{{animal.tutor.nome}}</label>
+            </div>
+            <div class="col-3">
+                <h6>Telefone</h6>
+                <label>{{animal.tutor.telefone}}</label>
+            </div>
+            <div class="col-3">
+                <h6>Email</h6>
+                <label>{{animal.tutor.email}}</label>
+            </div>
         </div>
     </div>
 </div>

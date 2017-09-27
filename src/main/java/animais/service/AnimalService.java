@@ -11,6 +11,7 @@ import org.postgresql.util.Base64;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,7 +21,9 @@ import org.springframework.web.multipart.MultipartFile;
 import com.google.gson.Gson;
 
 import animais.model.Animal;
+import animais.model.Usuario;
 import animais.model.base.IAnimalDAO;
+import animais.model.base.IUsuarioDAO;
 
 @Service
 @RequestMapping("/animal")
@@ -29,6 +32,9 @@ public class AnimalService {
 
 	@Inject
 	private IAnimalDAO amigoDao;
+	
+	@Inject
+	private IUsuarioDAO usuarioDao;
 	
 	@ResponseBody
 	@RequestMapping(value = "/novo", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -56,6 +62,13 @@ public class AnimalService {
 		return animais;
 	}
 	
+
+	@ResponseBody
+	@RequestMapping(value = "/buscar-tutor", method = RequestMethod.POST)
+	public Usuario buscarTutor(@RequestBody Animal animal) {
+		Usuario usuario = usuarioDao.busca(animal.getUsuario().getId());
+		return usuario;
+	}
 	
 	
 	

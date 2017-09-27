@@ -31,6 +31,10 @@
             return $http.get(urlConfig.baseUrl + '/animal/listar-todos');
         }
 
+        var _buscarTutorAnimal = function(animal) {
+            return $http.post(urlConfig.baseUrl + '/animal/buscar-tutor', animal);
+        }
+
         return {
             novoUsuario: _novoUsuario,
             autenticarUsuario: _autenticarUsuario,
@@ -38,7 +42,8 @@
             novoVoluntario: _novoVoluntario,
             consultarVoluntario: _consultarVoluntario,
             novoAnimal: _novoAnimal,
-            listarTodosAnimais: _listarTodosAnimais
+            listarTodosAnimais: _listarTodosAnimais,
+            buscarTutorAnimal:  _buscarTutorAnimal
         };  
     }
 })();
