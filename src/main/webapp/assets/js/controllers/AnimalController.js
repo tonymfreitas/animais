@@ -13,6 +13,24 @@ function AnimalController($scope, $base64, requisicoesService, growl, fileUpload
         reader.readAsDataURL(files[0]);
     }
 
+    function init() {
+        $scope.animal = {
+            nome: '',
+            raca: '',
+            peso: '',
+            cor: '',
+            dtnascimento: '',
+            sexo: '',
+            observacao: '',
+            foto: '',
+            usuario: {
+                id: bauService.get('id')
+            }
+        }
+    }
+
+    init();
+
     $scope.novoAnimal = function () {
         var config = {
             transformRequest: angular.identity,
@@ -20,17 +38,24 @@ function AnimalController($scope, $base64, requisicoesService, growl, fileUpload
                 'Content-Type': undefined
             }
         };
-        $scope.animal.dtnascimento = new Date($scope.animal.dtnascimento);
-        $scope.animal.usuario = {
-            id: bauService.get('id')
+        if (!validarCampoPeso()) {
+            if (validarCamposVazios()) {
+                $scope.animal.dtnascimento = new Date($scope.animal.dtnascimento);
+                var formData = fileUploadService.uploadFileToUrl('animal', $scope.animal, $scope.animal.myFile);
+                cadastrarAnimal(formData, config);
+            }
+        } else {
+            growl.error('O campo peso deve ser numérico');
         }
-        var formData = fileUploadService.uploadFileToUrl('animal', $scope.animal, $scope.myFile);
+    }
+
+    function cadastrarAnimal(formData, config) {
         requisicoesService.novoAnimal(formData, config)
             .then(function (response) {
                 if (response !== null && response !== '') {
                     growl.success($scope.animal.nome + ' foi cadastrado com sucesso');
                     $scope.animal = null;
-                    $scope.myFile = null;
+                    $scope.animal.myFile = null;
                     $scope.fotoPreview = null;
                 } else {
                     growl.error('Falha ao cadastrar um amigo');
@@ -38,6 +63,20 @@ function AnimalController($scope, $base64, requisicoesService, growl, fileUpload
             }, function (error) {
                 console.log(error);
             });
+    }
+
+    function validarCampoPeso() {
+        return isNaN($scope.animal.peso);
+    }
+
+    function validarCamposVazios() {
+        var camposVazios = isEmpytPropetsyObj($scope.animal);
+        var campo;
+        for (campo in camposVazios) {
+            growl.error('O campo ' + camposVazios[campo] + "  deve ser preenchido");
+            break;
+        }
+        return camposVazios.length === 0 ? true : false;
     }
 
 }

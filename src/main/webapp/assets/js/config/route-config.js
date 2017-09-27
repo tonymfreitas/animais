@@ -13,12 +13,14 @@ function configurarRotas($routeProvider) {
 
     .when('/animais/cadastrar', {
         templateUrl: 'assets/views/animais/cadastro.html',
-        controller: 'AnimalController'
+        controller: 'AnimalController',
+        authorize: true
     })
     
     .when('/animais/detalhes', {
         templateUrl: 'assets/views/animais/detalhes.html',
-        controller: 'AnimalDetalheController'
+        controller: 'AnimalDetalheController',
+        authorize: true
     })
 
     .when('/animais/login', {
@@ -33,7 +35,8 @@ function configurarRotas($routeProvider) {
 
     .when('/animais/cadastrar-voluntario', {
         templateUrl: 'assets/views/cadastro-voluntario.html',
-        controller: 'VoluntarioController'
+        controller: 'VoluntarioController',
+        authorize: true
     })
     ;
 

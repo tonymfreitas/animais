@@ -37,6 +37,12 @@ public class Usuario {
 
 	public Usuario() {
 	}
+	
+	public Usuario(String usuario, String senha, long id) {
+		this.usuario = usuario;
+		this.senha = senha;
+		this.id = id;
+	}
 
 	public Long getId() {
 		return id;

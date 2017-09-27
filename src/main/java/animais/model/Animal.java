@@ -36,7 +36,9 @@ public class Animal {
 	@Column(name="dtnascimento")
 	private Date dtnascimento;
 	
-	private char sexo;	
+	@Column(name="sexo", length=5)
+	private String sexo;
+	
 	private String observacao;
 	private double peso;
 	
@@ -80,10 +82,10 @@ public class Animal {
 	public void setDtnascimento(Date dtnascimento) {
 		this.dtnascimento = dtnascimento;
 	}
-	public char getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
-	public void setSexo(char sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 	public String getObservacao() {
