@@ -30,7 +30,7 @@ public class ApplicationContextConfig {
 		dataSource.setDriverClassName("org.postgresql.Driver");
 		dataSource.setUrl("jdbc:postgresql://localhost:5432/animais");
 		dataSource.setUsername("postgres");
-		dataSource.setPassword("postgres");
+		dataSource.setPassword("aula321");
 		return dataSource;
 	}
 
@@ -39,6 +39,8 @@ public class ApplicationContextConfig {
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
 		properties.put("hibernate.hbm2ddl.auto", "update");
+		properties.put("connection.useUnicode", true);
+		properties.put("connection.characterEncoding", "utf-8");
 		return properties;
 	}
 

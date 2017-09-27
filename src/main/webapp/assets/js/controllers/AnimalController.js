@@ -22,7 +22,6 @@ function AnimalController($scope, $base64, requisicoesService, growl, fileUpload
             dtnascimento: '',
             sexo: '',
             observacao: '',
-            foto: '',
             usuario: {
                 id: bauService.get('id')
             }
@@ -40,9 +39,11 @@ function AnimalController($scope, $base64, requisicoesService, growl, fileUpload
         };
         if (!validarCampoPeso()) {
             if (validarCamposVazios()) {
-                $scope.animal.dtnascimento = new Date($scope.animal.dtnascimento);
-                var formData = fileUploadService.uploadFileToUrl('animal', $scope.animal, $scope.animal.myFile);
-                cadastrarAnimal(formData, config);
+                if (!validarCampoFoto()) {
+                    $scope.animal.dtnascimento = new Date($scope.animal.dtnascimento);
+                    var formData = fileUploadService.uploadFileToUrl('animal', $scope.animal, $scope.myFile);
+                    cadastrarAnimal(formData, config);
+                }
             }
         } else {
             growl.error('O campo peso deve ser numérico');
@@ -77,6 +78,13 @@ function AnimalController($scope, $base64, requisicoesService, growl, fileUpload
             break;
         }
         return camposVazios.length === 0 ? true : false;
+    }
+
+    function validarCampoFoto() {
+        if ($scope.myFile === undefined) {
+            growl.error('O campo foto deve ser preenchido');
+        }
+        return $scope.myFile === undefined ? true : false;
     }
 
 }

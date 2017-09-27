@@ -36,13 +36,13 @@ public class Animal {
 	@Column(name="dtnascimento")
 	private Date dtnascimento;
 	
-	@Column(name="sexo", length=5)
+	@Column(name="sexo", length=10)
 	private String sexo;
 	
 	private String observacao;
 	private double peso;
 	
-	@Column(name="foto", length=100000)
+	@Column(name="foto", length=1000000)
 	private String foto;
 	
 	
