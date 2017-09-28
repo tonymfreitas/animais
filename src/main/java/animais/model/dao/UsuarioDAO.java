@@ -1,6 +1,5 @@
 package animais.model.dao;
 
-import java.util.Arrays;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -69,6 +68,21 @@ public class UsuarioDAO implements IUsuarioDAO {
 		criteria.setProjection(projList);
 		criteria.add(Restrictions.eq("usuario", usuario.getUsuario()));
 		criteria.add(Restrictions.eq("senha", usuario.getSenha()));
+		criteria.setResultTransformer(Transformers.aliasToBean(Usuario.class));
+		Usuario usuarioConsultado = (Usuario) criteria.uniqueResult();
+		return usuarioConsultado;
+	}
+
+	@Transactional
+	public Usuario consultarUsuarioTutor(long id) {
+		Criteria criteria = dao.getCriteria();
+		ProjectionList projList = Projections.projectionList();
+		projList.add(Projections.property("usuario"), "usuario");
+		projList.add(Projections.property("nome"), "nome");
+		projList.add(Projections.property("email"), "email");
+		projList.add(Projections.property("telefone"), "telefone");
+		criteria.setProjection(projList);
+		criteria.add(Restrictions.eq("id", id));
 		criteria.setResultTransformer(Transformers.aliasToBean(Usuario.class));
 		Usuario usuarioConsultado = (Usuario) criteria.uniqueResult();
 		return usuarioConsultado;

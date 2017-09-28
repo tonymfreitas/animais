@@ -20,8 +20,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
 
-import animais.model.Animal;
 import animais.model.Usuario;
+import animais.model.animal.Animal;
 import animais.model.base.IAnimalDAO;
 import animais.model.base.IUsuarioDAO;
 
@@ -66,7 +66,7 @@ public class AnimalService {
 	@ResponseBody
 	@RequestMapping(value = "/buscar-tutor", method = RequestMethod.POST)
 	public Usuario buscarTutor(@RequestBody Animal animal) {
-		Usuario usuario = usuarioDao.busca(animal.getUsuario().getId());
+		Usuario usuario = usuarioDao.consultarUsuarioTutor(animal.getUsuario().getId());
 		return usuario;
 	}
 	

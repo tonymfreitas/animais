@@ -19,8 +19,7 @@ function configurarRotas($routeProvider) {
     
     .when('/animais/detalhes', {
         templateUrl: 'assets/views/animais/detalhes.html',
-        controller: 'AnimalDetalheController',
-        authorize: true
+        controller: 'AnimalDetalheController'
     })
 
     .when('/animais/login', {

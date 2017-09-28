@@ -1,16 +1,24 @@
-package animais.model;
+package animais.model.animal;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import animais.model.Usuario;
 
 @Entity
 public class Animal {
@@ -23,6 +31,10 @@ public class Animal {
 	@JoinColumn(name = "idusuario", unique = true)
 	private Usuario usuario;
 	
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "anuncio")
+	private List<AnimalComentario> comentarios;
+	
 	@Column(name="nome", length=150)
 	private String nome;
 	
@@ -33,8 +45,10 @@ public class Animal {
 	private String cor;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="dtnascimento")
 	private Date dtnascimento;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dtcadastro;
 	
 	@Column(name="sexo", length=10)
 	private String sexo;
@@ -81,6 +95,12 @@ public class Animal {
 	}
 	public void setDtnascimento(Date dtnascimento) {
 		this.dtnascimento = dtnascimento;
+	}
+	public Date getDtCadastro() {
+		return dtcadastro;
+	}
+	public void setDtCadastro(Date dtcadastro) {
+		this.dtcadastro = dtcadastro;
 	}
 	public String getSexo() {
 		return sexo;

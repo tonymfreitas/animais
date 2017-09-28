@@ -41,6 +41,7 @@ function AnimalController($scope, $base64, requisicoesService, growl, fileUpload
             if (validarCamposVazios()) {
                 if (!validarCampoFoto()) {
                     $scope.animal.dtnascimento = new Date($scope.animal.dtnascimento);
+                    $scope.animal.dtcadastro = new Date();
                     var formData = fileUploadService.uploadFileToUrl('animal', $scope.animal, $scope.myFile);
                     cadastrarAnimal(formData, config);
                 }

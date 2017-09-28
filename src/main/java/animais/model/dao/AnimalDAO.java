@@ -10,7 +10,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import animais.model.Animal;
+import animais.model.animal.Animal;
 import animais.model.base.IAnimalDAO;
 
 @Repository

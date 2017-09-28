@@ -12,38 +12,41 @@
             </div>
             <div class="col-12">
                 <div class="float-right">
-                    <label>
-                                <strong>Data de nascimento: </strong>
-                                {{animal.dtnascimento | date : "dd/MM/yyyy"}}
-                            </label>
+                    <label class="float-right" style="color:#563d7c">
+                        Cadastro em: {{animal.dtCadastro | date : "dd/MM/yyyy hh:mm"}} por {{animal.tutor.usuario | uppercase}}
+                    </label>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-12 mt-4">
-        <h2>Características</h2>
+        <h3>Características</h3>
         <hr>
         <div class="row">
-            <div class="col-3">
+            <div class="col-2">
                 <h6>Raça</h6>
                 <label>{{animal.raca}}</label>
             </div>
-            <div class="col-3">
+            <div class="col-2">
                 <h6>Peso</h6>
                 <label>{{animal.peso}} kg</label>
             </div>
-            <div class="col-3">
+            <div class="col-2">
                 <h6>Cor</h6>
                 <label>{{animal.cor}}</label>
             </div>
-            <div class="col-3">
+            <div class="col-2">
                 <h6>Sexo</h6>
                 <label>{{animal.sexo}}</label>
             </div>
+            <div class="col-2">
+                <h6>Data de nascimento </h6>
+                <label>{{animal.dtnascimento | date : "dd/MM/yyyy"}}</label>
+            </div>
         </div>
     </div>
-    <div class="col-12 mt-4 mb-4">
-        <h2>Responsável</h2>
+    <div class="col-12 mt-4">
+        <h3>Responsável</h3>
         <hr>
         <div class="row">
             <div class="col-3">
@@ -60,4 +63,42 @@
             </div>
         </div>
     </div>
+    <div class="col-12 mt-4 mb-4">
+        <h3>Comentários</h3>
+        <hr>
+        <div ng-if="animal.comentarios.length === 0" class="col-6 offset-md-3 bg-info text-center">
+            Nenhum comentário inserido
+        </div>
+    </div>
+    <div class="col-6" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}" ng-repeat="comentario in animal.comentarios track by $index">
+        <div class="col-2">
+            <div class="thumbnail">
+                <img class="img-fluid" ng-src="http://www.fundosanimais.com/Imagens/par-leoes.jpg">
+            </div>
+        </div>
+        <div class="col-10">
+            <div class="card">
+                <div class="card-header">
+                    <strong>{{comentario.autor}}</strong>
+                    <strong class="float-right">{{comentario.dataInclusao | date: 'dd/MM/yyyy HH:mm:ss'}}</strong>
+                </div>
+                <div class="card-block">
+                    {{comentario.texto}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-if="logado" class="col-6 mb-4">
+        <form name="formComentario" ng-submit="inserirComentario(formComentario.textoComentario)">
+            <div>
+                <div class="form-group">
+                    <textarea class="form-control" name="textoComentario" ng-model="textoComentario" id="" cols="20" rows="5"></textarea>
+                </div>
+                <div>
+                    <input type="submit" class="btn btn-outline-success float-right" value="Comentar" ng-disabled="textoComentario.length === 0 || textoComentario.length === null || textoComentario.length === undefined">
+                </div>
+            </div>
+        </form>
+    </div>
+
 </div>
