@@ -70,8 +70,8 @@
             Nenhum comentário inserido
         </div>
     </div>
-    <div class="col-6" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}" ng-repeat="comentario in animal.comentarios track by $index">
-        <div class="col-2">
+    <div class="col-6 row mb-3" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}" ng-repeat="comentario in animal.comentarios track by $index">
+        <div class="col-2" ng-class="coment-space: $index % 2 === 0">
             <div class="thumbnail">
                 <img class="img-fluid" ng-src="http://www.fundosanimais.com/Imagens/par-leoes.jpg">
             </div>
@@ -79,8 +79,8 @@
         <div class="col-10">
             <div class="card">
                 <div class="card-header">
-                    <strong>{{comentario.autor}}</strong>
-                    <strong class="float-right">{{comentario.dataInclusao | date: 'dd/MM/yyyy HH:mm:ss'}}</strong>
+                    <strong>{{comentario.usuario.nome}}</strong>
+                    <strong class="float-right"></strong>
                 </div>
                 <div class="card-block">
                     {{comentario.texto}}
@@ -88,17 +88,19 @@
             </div>
         </div>
     </div>
-    <div ng-if="logado" class="col-6 mb-4">
-        <form name="formComentario" ng-submit="inserirComentario(formComentario.textoComentario)">
-            <div>
-                <div class="form-group">
-                    <textarea class="form-control" name="textoComentario" ng-model="textoComentario" id="" cols="20" rows="5"></textarea>
-                </div>
+    <div class="row col-12">
+        <div ng-if="logado" class="col-6 mb-4 mt-3 mb-3">
+            <form name="formComentario" ng-submit="inserirComentario()">
                 <div>
-                    <input type="submit" class="btn btn-outline-success float-right" value="Comentar" ng-disabled="textoComentario.length === 0 || textoComentario.length === null || textoComentario.length === undefined">
+                    <div class="form-group">
+                        <textarea class="form-control" name="textoComentario" ng-model="comentarioInserido.texto" id="" cols="20" rows="5"></textarea>
+                    </div>
+                    <div>
+                        <input type="submit" class="btn btn-outline-success float-right" value="Comentar" ng-disabled="comentarioInserido.texto.length === 0 || comentarioInserido.texto.length === null || comentarioInserido.texto.length === undefined">
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 
 </div>

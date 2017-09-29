@@ -35,6 +35,14 @@
             return $http.post(urlConfig.baseUrl + '/animal/buscar-tutor', animal);
         }
 
+        var _inserirComentario = function(comentario) {
+            return $http.post(urlConfig.baseUrl + '/comentario/inserir-comentario', comentario);
+        }
+
+        var _listarComentarios = function(animal) {
+            return $http.post(urlConfig.baseUrl + '/comentario/listar-comentarios', animal);
+        }
+
         return {
             novoUsuario: _novoUsuario,
             autenticarUsuario: _autenticarUsuario,
@@ -43,7 +51,9 @@
             consultarVoluntario: _consultarVoluntario,
             novoAnimal: _novoAnimal,
             listarTodosAnimais: _listarTodosAnimais,
-            buscarTutorAnimal:  _buscarTutorAnimal
+            buscarTutorAnimal:  _buscarTutorAnimal,
+            inserirComentario: _inserirComentario,
+            listarComentarios: _listarComentarios
         };  
     }
 })();

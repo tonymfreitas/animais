@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import animais.model.Usuario;
@@ -18,11 +18,11 @@ public class AnimalComentario {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long id;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "idusuario")
 	private Usuario usuario;
 
-	@OneToOne	
+	@ManyToOne	
 	@JoinColumn(name = "idanimal")
 	private Animal animal;
 
@@ -42,6 +42,14 @@ public class AnimalComentario {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+	
+	public Animal getAnimal() {
+		return animal;
+	}
+	
+	public void setAnimal(Animal animal) {
+		this.animal = animal;
 	}
 
 	public String getTexto() {
