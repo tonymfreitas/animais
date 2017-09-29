@@ -22,7 +22,9 @@ import com.google.gson.Gson;
 
 import animais.model.Usuario;
 import animais.model.animal.Animal;
+import animais.model.animal.AnimalComentario;
 import animais.model.base.IAnimalDAO;
+import animais.model.base.IComentarioDAO;
 import animais.model.base.IUsuarioDAO;
 
 @Service
@@ -35,6 +37,9 @@ public class AnimalService {
 	
 	@Inject
 	private IUsuarioDAO usuarioDao;
+	
+	@Inject
+	private IComentarioDAO comentarioDao;
 	
 	@ResponseBody
 	@RequestMapping(value = "/novo", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -68,6 +73,13 @@ public class AnimalService {
 	public Usuario buscarTutor(@RequestBody Animal animal) {
 		Usuario usuario = usuarioDao.consultarUsuarioTutor(animal.getUsuario().getId());
 		return usuario;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/inserir-comentario", method = RequestMethod.POST)
+	public long inserirComentario(@RequestBody AnimalComentario comentario) {
+		long adicionou= comentarioDao.adiciona(comentario);
+		return adicionou;
 	}
 	
 	

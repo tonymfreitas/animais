@@ -14,7 +14,7 @@ function AnimalDetalheController($scope, bauService, requisicoesService) {
             .then(function (response) {
                 if (response.data !== null && response.data !== '') {
                     $scope.animal.tutor = response.data;
-                    $scope.animal.comentarios =[];
+                    $scope.animal.comentarios = [];
                     $scope.animal.tutor.telefone = aplicarMascaraTelefone($scope.animal.tutor.telefone);
                 }
             }, function (error) {
@@ -23,5 +23,14 @@ function AnimalDetalheController($scope, bauService, requisicoesService) {
     }
 
     init();
+
+    $scope.inserirComentario = function (texto) {
+        requisicoesService.inserirComentarioAnuncio(texto)
+            .then(function (response) {
+
+            }, function (error) {
+                console.log(error);
+            });
+    };
 
 }

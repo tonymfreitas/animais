@@ -32,7 +32,7 @@ public class Animal {
 	private Usuario usuario;
 	
 	@LazyCollection(LazyCollectionOption.FALSE)
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "anuncio")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="animal")
 	private List<AnimalComentario> comentarios;
 	
 	@Column(name="nome", length=150)
@@ -56,7 +56,7 @@ public class Animal {
 	private String observacao;
 	private double peso;
 	
-	@Column(name="foto", length=1000000)
+	@Column(name="foto", length=10000000)
 	private String foto;
 	
 	
