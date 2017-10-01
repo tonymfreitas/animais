@@ -71,6 +71,7 @@ public class ComentarioDAO implements IComentarioDAO {
 		projList.add(Projections.property("id"), "id");
 		projList.add(Projections.property("texto"), "texto");
 		projList.add(Projections.property("usuario"), "usuario");
+		projList.add(Projections.property("dtCadastro"), "dtCadastro");
 		criteria.setProjection(projList);
 		criteria.add(Restrictions.eq("animal.id", animal.getId()));
 		criteria.setResultTransformer(Transformers.aliasToBean(AnimalComentario.class));

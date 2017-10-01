@@ -43,7 +43,14 @@ public class AnimalDAO implements IAnimalDAO {
 	public Animal busca(Long id) {
 		Criteria criteria = dao.getCriteria();
 		criteria.add(Restrictions.eq("id", id));
-		return (Animal) criteria.uniqueResult();
+		Object obj = criteria.uniqueResult();
+		Animal animalConsultado = new Animal();
+		try {
+			animalConsultado = (Animal) obj;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return animalConsultado;
 	}
 
 	@Transactional

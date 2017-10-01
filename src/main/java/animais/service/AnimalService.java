@@ -2,6 +2,7 @@ package animais.service;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -22,6 +23,7 @@ import com.google.gson.Gson;
 
 import animais.model.Usuario;
 import animais.model.animal.Animal;
+import animais.model.animal.AnimalComentario;
 import animais.model.base.IAnimalDAO;
 import animais.model.base.IUsuarioDAO;
 
@@ -71,6 +73,15 @@ public class AnimalService {
 		return usuario;
 	}
 
+	@ResponseBody
+	@RequestMapping(value = "/buscar", method = RequestMethod.POST)
+	public Animal buscarAnimal(@RequestBody Animal animal) {
+		Animal animalConsultado = amigoDao.busca(animal.getId());
+		List<AnimalComentario> comentarios = new ArrayList<>();
+		comentarios.addAll(animalConsultado.getComentarios());
+		animalConsultado.setComentarios(comentarios);
+		return animalConsultado;
+	}
 	
 	
 	

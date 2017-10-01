@@ -1,6 +1,6 @@
 angular.module('animais').controller('AnimalDetalheController', AnimalDetalheController);
 
-function AnimalDetalheController($scope, bauService, requisicoesService) {
+function AnimalDetalheController($scope, bauService, requisicoesService, socket) {
 
     function init() {
         $scope.animal = bauService.get('animal-detalhe');
@@ -9,6 +9,7 @@ function AnimalDetalheController($scope, bauService, requisicoesService) {
         bauService.deletar('animal-detalhe');
         buscarTutorAnimal($scope.animal);
         listarComentarios();
+        $scope.message = 'Comentário enviado';
     }
 
     function buscarTutorAnimal(animal) {
@@ -40,14 +41,32 @@ function AnimalDetalheController($scope, bauService, requisicoesService) {
             "id": bauService.get('id')
         }
         $scope.comentarioInserido.animal = $scope.animal;
+        $scope.comentarioInserido.dtcadastro = new Date();
         requisicoesService.inserirComentario($scope.comentarioInserido)
             .then(function (response) {
                 if (response.data !== null && response.data !== '') {
                     console.log('Comentário inserido com sucesso!');
+                    socket.send(null);
                 }
             }, function (error) {
                 console.log(error);
             });
+    };
+
+
+    // handle received messages
+    socket.onmessage = function (event) {
+        $scope.$apply();
+    };
+
+    // send a message
+    $scope.sendMessage = function () {
+        $scope.interactions.push({
+            direction: "SENT",
+            message: $scope.message
+        });
+        socket.send($scope.message);
+        $scope.message = "";
     };
 
 }

@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-12">
-        <h1>{{animal.nome}}</h1>
+        <h1>{{animal.nome }}</h1>
         <hr>
         <div class="row">
             <div class="col-6">
@@ -13,7 +13,7 @@
             <div class="col-12">
                 <div class="float-right">
                     <label class="float-right" style="color:#563d7c">
-                        Cadastro em: {{animal.dtCadastro | date : "dd/MM/yyyy hh:mm"}} por {{animal.tutor.usuario | uppercase}}
+                        Cadastro em: {{animal.dtcadastro  | date : "dd/MM/yyyy hh:mm"}} por {{animal.tutor.usuario | uppercase}}
                     </label>
                 </div>
             </div>
@@ -71,7 +71,7 @@
         </div>
     </div>
     <div class="col-6 row mb-3" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}" ng-repeat="comentario in animal.comentarios track by $index">
-        <div class="col-2" ng-class="coment-space: $index % 2 === 0">
+        <div class="col-2">
             <div class="thumbnail">
                 <img class="img-fluid" ng-src="http://www.fundosanimais.com/Imagens/par-leoes.jpg">
             </div>
@@ -80,7 +80,7 @@
             <div class="card">
                 <div class="card-header">
                     <strong>{{comentario.usuario.nome}}</strong>
-                    <strong class="float-right"></strong>
+                    <strong class="float-right">{{comentario.dtCadastro | date : "dd/MM/yyyy hh:mm"}}</strong>
                 </div>
                 <div class="card-block">
                     {{comentario.texto}}
@@ -89,7 +89,7 @@
         </div>
     </div>
     <div class="row col-12">
-        <div ng-if="logado" class="col-6 mb-4 mt-3 mb-3">
+        <div ng-if="logado" class="col-6 mb-4 mt-3 mb-3 float-right">
             <form name="formComentario" ng-submit="inserirComentario()">
                 <div>
                     <div class="form-group">
