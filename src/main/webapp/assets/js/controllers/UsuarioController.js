@@ -1,6 +1,6 @@
 angular.module('animais').controller('UsuarioController', UsuarioController);
 
-function UsuarioController($scope, requisicoesService, clearMaskService, growl) {
+function UsuarioController($scope, requisicoesService, clearMaskService, growl, $anchorScroll) {
 
     function init() {
 
@@ -30,6 +30,7 @@ function UsuarioController($scope, requisicoesService, clearMaskService, growl) 
                     cadastrarNovoUsuario();
                 } else {
                     growl.error('Senhas diferentes');
+                    $anchorScroll();
                 }
             }
         }

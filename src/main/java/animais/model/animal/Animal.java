@@ -35,7 +35,7 @@ public class Animal {
 	private Usuario usuario;
 	
 	@LazyCollection(LazyCollectionOption.FALSE)
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="animal", fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="animal")
 	private List<AnimalComentario> comentarios = new ArrayList<>();
 	
 	@Column(name="nome", length=150)
@@ -135,7 +135,7 @@ public class Animal {
 		if(!Objects.isNull(comentarios) && !comentarios.isEmpty()) {
 			this.comentarios = comentarios;
 			for(AnimalComentario comentario : this.comentarios) {
-				comentario.setAnimal(this);
+				comentario.setAnimal(this.id);
 			}
 		}
 	}

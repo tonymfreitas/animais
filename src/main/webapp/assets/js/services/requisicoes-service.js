@@ -9,39 +9,43 @@
 
         var _autenticarUsuario = function(usuario) {
             return $http.post(urlConfig.baseUrl + '/usuario/autenticar', usuario);
-        }
+        };
 
         var _listarInformacoesUsuario = function(usuario) {
             return $http.post(urlConfig.baseUrl + '/usuario/listar-informacoes', usuario);
-        }
+        };
 
         var _novoVoluntario = function(voluntario) {
             return $http.post(urlConfig.baseUrl + '/voluntario/novo', voluntario);
-        }
+        };
         
         var _consultarVoluntario = function(usuario) {
             return $http.post(urlConfig.baseUrl + '/voluntario/consultar', usuario);
-        }
+        };
 
         var _novoAnimal = function(animal, config) {
             return $http.post(urlConfig.baseUrl + '/animal/novo', animal, config);
-        }
+        };
 
         var _listarTodosAnimais = function() {
             return $http.get(urlConfig.baseUrl + '/animal/listar-todos');
-        }
-
+        };
+        
         var _buscarTutorAnimal = function(animal) {
             return $http.post(urlConfig.baseUrl + '/animal/buscar-tutor', animal);
-        }
+        };
 
         var _inserirComentario = function(comentario) {
             return $http.post(urlConfig.baseUrl + '/comentario/inserir-comentario', comentario);
-        }
+        };
 
         var _listarComentarios = function(animal) {
             return $http.post(urlConfig.baseUrl + '/comentario/listar-comentarios', animal);
-        }
+        };
+
+        var _consultarAnimal = function(animal) {
+            return $http.post(urlConfig.baseUrl + '/animal/consultar', animal);
+        };
 
         return {
             novoUsuario: _novoUsuario,
@@ -53,7 +57,8 @@
             listarTodosAnimais: _listarTodosAnimais,
             buscarTutorAnimal:  _buscarTutorAnimal,
             inserirComentario: _inserirComentario,
-            listarComentarios: _listarComentarios
+            listarComentarios: _listarComentarios,
+            consultarAnimal: _consultarAnimal
         };  
     }
 })();

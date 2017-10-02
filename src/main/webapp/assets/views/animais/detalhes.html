@@ -51,15 +51,15 @@
         <div class="row">
             <div class="col-3">
                 <h6>Tutor: </h6>
-                <label>{{animal.tutor.nome}}</label>
+                <label>{{animal.usuario.nome}}</label>
             </div>
             <div class="col-3">
                 <h6>Telefone</h6>
-                <label>{{animal.tutor.telefone}}</label>
+                <label>{{animal.usuario.telefone}}</label>
             </div>
             <div class="col-3">
                 <h6>Email</h6>
-                <label>{{animal.tutor.email}}</label>
+                <label>{{animal.usuario.email}}</label>
             </div>
         </div>
     </div>
@@ -78,12 +78,12 @@
         </div>
         <div class="col-10">
             <div class="card">
-                <div class="card-header">
-                    <strong>{{comentario.usuario.nome}}</strong>
-                    <strong class="float-right">{{comentario.dtCadastro | date : "dd/MM/yyyy hh:mm"}}</strong>
-                </div>
+                <h3 class="card-header small">
+                    {{comentario.usuario.nome}}
+                    <span class="float-right">{{comentario.dtCadastro | date : "dd/MM/yyyy a"}}</span>
+                </h3>
                 <div class="card-block">
-                    {{comentario.texto}}
+                    <p class="card-text">{{comentario.texto}}</p>
                 </div>
             </div>
         </div>

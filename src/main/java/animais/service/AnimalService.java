@@ -74,12 +74,9 @@ public class AnimalService {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/buscar", method = RequestMethod.POST)
+	@RequestMapping(value = "/consultar", method = RequestMethod.POST)
 	public Animal buscarAnimal(@RequestBody Animal animal) {
 		Animal animalConsultado = amigoDao.busca(animal.getId());
-		List<AnimalComentario> comentarios = new ArrayList<>();
-		comentarios.addAll(animalConsultado.getComentarios());
-		animalConsultado.setComentarios(comentarios);
 		return animalConsultado;
 	}
 	
