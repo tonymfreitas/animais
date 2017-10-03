@@ -3,8 +3,8 @@
 
     function requisicoesService($http, urlConfig, $q) {
 
-        var _novoUsuario = function(usuario) {
-            return $http.post(urlConfig.baseUrl + '/usuario/novo', usuario);
+        var _novoUsuario = function(usuario, config) {
+            return $http.post(urlConfig.baseUrl + '/usuario/novo', usuario, config);
         };
 
         var _autenticarUsuario = function(usuario) {

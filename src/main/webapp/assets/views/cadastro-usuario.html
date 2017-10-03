@@ -46,6 +46,17 @@
                             <input type="text" class="form-control" ng-model="usuario.endereco.bairro">
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="">Foto</label>
+                            <input type="file" name="foto" file-upload="myFile" file-input>
+                        </div>
+                        <div class="form-group col-6">
+                            <div class="preview col-6">
+                                <img src="{{fotoPreview}}" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
                     <div>
                         <h4>Credenciais</h4>
                         <hr>

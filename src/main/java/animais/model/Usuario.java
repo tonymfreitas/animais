@@ -34,6 +34,9 @@ public class Usuario {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idendereco")
 	private Endereco endereco;
+	
+	@Column(name="foto", length=10000000)
+	private String foto;
 
 	public Usuario() {
 	}
@@ -99,5 +102,12 @@ public class Usuario {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+	
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
 
+	public String getFoto() {
+		return foto;
+	}
 }

@@ -1,6 +1,17 @@
 angular.module('animais').controller('UsuarioController', UsuarioController);
 
-function UsuarioController($scope, requisicoesService, clearMaskService, growl, $anchorScroll) {
+function UsuarioController($scope, requisicoesService, clearMaskService, growl, $anchorScroll, fileUploadService) {
+
+    var files = event.target.files;
+    var reader = new FileReader();
+
+    reader.addEventListener("load", function () {
+        $scope.fotoPreview = reader.result;
+    }, false);
+
+    if (files) {
+        reader.readAsDataURL(files[0]);
+    }
 
     function init() {
 
@@ -76,7 +87,14 @@ function UsuarioController($scope, requisicoesService, clearMaskService, growl, 
     }
 
     function cadastrarNovoUsuario() {
-        requisicoesService.novoUsuario($scope.usuario)
+         var config = {
+            transformRequest: angular.identity,
+            headers: {
+                'Content-Type': undefined
+            }
+        };
+        var formData = fileUploadService.uploadFileToUrl('usuario', $scope.usuario, $scope.myFile);
+        requisicoesService.novoUsuario(formData, config)
             .then(function (response) {
                 if (response.data !== null) {
                     if (response.data !== '') {

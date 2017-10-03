@@ -1,6 +1,6 @@
 angular.module('animais').controller('AnimalController', AnimalController);
 
-function AnimalController($scope, $base64, requisicoesService, growl, fileUploadService, bauService) {
+function AnimalController($scope, requisicoesService, growl, fileUploadService, bauService) {
 
     var files = event.target.files;
     var reader = new FileReader();

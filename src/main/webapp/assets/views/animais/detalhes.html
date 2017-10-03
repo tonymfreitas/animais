@@ -73,7 +73,7 @@
     <div class="col-6 row mb-3" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}" ng-repeat="comentario in animal.comentarios track by $index">
         <div class="col-2">
             <div class="thumbnail">
-                <img class="img-fluid" ng-src="http://www.fundosanimais.com/Imagens/par-leoes.jpg">
+                <img class="img-fluid" src="data:image/png;base64,{{comentario.usuario.foto}}">
             </div>
         </div>
         <div class="col-10">
