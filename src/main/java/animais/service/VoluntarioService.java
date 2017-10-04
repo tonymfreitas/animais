@@ -1,5 +1,7 @@
 package animais.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -33,12 +35,16 @@ public class VoluntarioService {
 	
 	@ResponseBody
 	@RequestMapping(value = "/consultar", method = RequestMethod.POST)
-	public String consultarVoluntario(@RequestBody String usuario) {
-		Gson gson = new Gson();
-		Usuario usuarioMapeado = gson.fromJson(usuario, Usuario.class);
-		Voluntario voluntarioConsultado = voluntarioDao.consultarVoluntario(usuarioMapeado);
-		String json = gson.toJson(voluntarioConsultado);
-		return json;
+	public Voluntario consultarVoluntario(@RequestBody Usuario usuario) {
+		Voluntario voluntarioConsultado = voluntarioDao.consultarVoluntario(usuario);
+		return voluntarioConsultado;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/listar", method = RequestMethod.GET)
+	public List<Voluntario> listarVoluntarios() {
+		List<Voluntario> voluntarios = voluntarioDao.lista();
+		return voluntarios;
 	}
 	
 }

@@ -1,6 +1,6 @@
 angular.module('animais').controller('VoluntarioController', VoluntarioController);
 
-function VoluntarioController($scope, growl, bauService, requisicoesService, $location, routeService) {
+function VoluntarioController($scope, feedbackService, bauService, requisicoesService, $location, routeService) {
 
     function carregarInformacoesUsuario() {
         var id = bauService.get('id');
@@ -14,7 +14,7 @@ function VoluntarioController($scope, growl, bauService, requisicoesService, $lo
                     $scope.usuario = response.data;
                     aplicarMascaras();
                 } else {
-                    growl.error('Usuário não encontrado');
+                    feedbackService.error('Usuário não encontrado');
                 }
             }, function (error) {
                 console.log(error);
@@ -59,10 +59,10 @@ function VoluntarioController($scope, growl, bauService, requisicoesService, $lo
         requisicoesService.novoVoluntario($scope.voluntario)
             .then(function (response) {
                 if (response.data !== null && response.data !== '') {
-                    growl.success('Parabens ' + $scope.usuario.usuario + ' você acaba de ser tornar um voluntário!!');
+                    feedbackService.success('Parabens ' + $scope.usuario.usuario + ' você acaba de ser tornar um voluntário!!');
                     routeService.mudarRotaTimeout('/animais');
                 } else {
-                    growl.error('Falha na solicitação');
+                    feedbackService.error('Falha na solicitação');
                 }
             }, function (error) {
                 console.log(error);
@@ -73,7 +73,7 @@ function VoluntarioController($scope, growl, bauService, requisicoesService, $lo
         requisicoesService.consultarVoluntario(usuario)
             .then(function (response) {
                 if (response.data !== null && response.data !== '') {
-                    growl.error('Já existe um registro de voluntário para este usuário');
+                    feedbackService.error('Já existe um registro de voluntário para este usuário');
                 } else {
                     novoVoluntario();
                 }
@@ -92,6 +92,8 @@ function VoluntarioController($scope, growl, bauService, requisicoesService, $lo
         }
         console.log($scope.voluntario.categorias);
     }
+
+    
 
 
 

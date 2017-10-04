@@ -41,6 +41,7 @@
     <script src="assets/js/services/route-service.js"></script>
     <script src="assets/js/services/fileUpload-service.js"></script>
     <script src="assets/js/services/socket.js"></script>
+    <script src="assets/js/services/feedback-service.js"></script>
 
     <!-- Controllers -->
     <script src="assets/js/controllers/PrincipalController.js"></script>
@@ -50,6 +51,8 @@
     <script src="assets/js/controllers/UsuarioController.js"></script>
     <script src="assets/js/controllers/VoluntarioController.js"></script>
     <script src="assets/js/controllers/AnimalDetalheController.js"></script>
+    <script src="assets/js/controllers/ListaVoluntarioController.js"></script>
+    <script src="assets/js/controllers/VoluntarioDetalheController.js"></script>
 
     <!-- Configuração -->
     <script src="assets/js/config/route-config.js"></script>
@@ -94,6 +97,9 @@
                             <a class="dropdown-item" href="#">Categorias</a>
                         </div>
                     </div>
+                    <li class="nav-item border-solid" ng-if="logado">
+                        <a class="nav-link" href="#!/animais/voluntarios">Voluntarios</a>
+                    </li>
                     <li class="nav-item border-solid">
                         <a class="nav-link" href="" ng-click="consultarVoluntarioExistente()">Seja um voluntário</a>
                     </li>

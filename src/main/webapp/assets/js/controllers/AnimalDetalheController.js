@@ -20,7 +20,6 @@ function AnimalDetalheController($scope, bauService, requisicoesService, socket)
         requisicoesService.consultarAnimal(animal)
             .then(function (response) {
                 $scope.animal = response.data;
-                socket.send(null);
             }, function (error) {
                 console.log(error);
             });
@@ -38,7 +37,8 @@ function AnimalDetalheController($scope, bauService, requisicoesService, socket)
             .then(function (response) {
                 if (response.data !== null && response.data !== '') {
                     console.log('Comentário inserido com sucesso!');
-                    consultarAnimal();
+                    socket.send(null);
+
                 }
             }, function (error) {
                 console.log(error);
@@ -48,6 +48,7 @@ function AnimalDetalheController($scope, bauService, requisicoesService, socket)
 
     // handle received messages
     socket.onmessage = function (event) {
+        consultarAnimal();
         $scope.$apply();
     };
 
@@ -59,6 +60,12 @@ function AnimalDetalheController($scope, bauService, requisicoesService, socket)
         });
         socket.send($scope.message);
         $scope.message = "";
+    };
+
+    $scope.getClass = function(index) {
+        return {
+            comment: (index % 2) === 1
+        };
     };
 
 }

@@ -23,155 +23,16 @@
     <script src="assets/js/diversos/owl.carousel.js"></script>
     <script src="assets/js/diversos/mask-validation.js"></script>
 
+    <script src="assets/js/controllers/teste.js"></script>
+
 </head>
 
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <h1>{{animal.nome}}</h1>
-                <hr>
-                <div class="row">
-                    <div class="col-6">
-                        <img class="rounded d-block img-thumbnail" src="data:image/png;base64,{{animal.foto}}" alt="" style="width:500px;height:300px">
-                    </div>
-
-                    <div class="my-auto col-6">
-                        {{animal.observacao}}
-                    </div>
-                    <div class="col-12">
-                        <div class="float-right">
-                            <label class="float-right" style="color:#563d7c">
-                        Cadastro em: {{animal.dtcadastro  | date : "dd/MM/yyyy hh:mm"}} por {{animal.tutor.usuario | uppercase}}
-                    </label>
-                        </div>
-                    </div>
-                </div>
+            <div ng-repeat="nome in nomes track by $index" ng-class="getClass($index)">
+                <p>{{nome}}</p>
             </div>
-            <div class="row">
-                <div class="col-12 mt-4">
-                    <h3>Características</h3>
-                    <hr>
-                    <div class="row">
-                        <div class="col-2">
-                            <h6>Raça</h6>
-                            <label>{{animal.raca}}</label>
-                        </div>
-                        <div class="col-2">
-                            <h6>Peso</h6>
-                            <label>{{animal.peso}} kg</label>
-                        </div>
-                        <div class="col-2">
-                            <h6>Cor</h6>
-                            <label>{{animal.cor}}</label>
-                        </div>
-                        <div class="col-2">
-                            <h6>Sexo</h6>
-                            <label>{{animal.sexo}}</label>
-                        </div>
-                        <div class="col-2">
-                            <h6>Data de nascimento </h6>
-                            <label>{{animal.dtnascimento | date : "dd/MM/yyyy"}}</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 mt-4">
-                    <h3>Responsável</h3>
-                    <hr>
-                    <div class="row">
-                        <div class="col-3">
-                            <h6>Tutor: </h6>
-                            <label>{{animal.usuario.nome}}</label>
-                        </div>
-                        <div class="col-3">
-                            <h6>Telefone</h6>
-                            <label>{{animal.usuario.telefone}}</label>
-                        </div>
-                        <div class="col-3">
-                            <h6>Email</h6>
-                            <label>{{animal.usuario.email}}</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 mt-4 mb-4">
-                    <h3>Comentários</h3>
-                    <hr>
-                    <div ng-if="animal.comentarios.length === 0" class="col-6 offset-md-3 bg-info text-center">
-                        Nenhum comentário inserido
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="row">
-                        <div class="col-6 row" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}" ng-repeat="comentario in animal.comentarios track by $index">
-                            <div class="row">
-                                <div class="col-2 row">
-                                    <div class="thumbnail">
-                                        <img class="img-fluid" src="http://www.fundosanimais.com/Imagens/par-leoes.jpg">
-                                    </div>
-                                </div>
-                                <div class="col-10 ml-1 row">
-                                    <div class="card card-outline-warning">
-                                        <div class="card-blockquote">
-                                            <h3 class="card-header small">
-                                                {{comentario.usuario.nome}}
-                                                <span class="float-right">{{comentario.dtCadastro | date : "dd/MM/yyyy a"}}</span>
-                                            </h3>
-                                            <div class="card-block">
-                                                <p class="card-text">
-                                                    asdfasdfasfasdsdafadsfsadfsadffffffffffffffffffffffffffffffffffffffffffffffffasdfasfaasdfasdf
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                         <div class="col-6 row" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}" ng-repeat="comentario in animal.comentarios track by $index">
-                            <div class="row">
-                                <div class="col-2 row">
-                                    <div class="thumbnail">
-                                        <img class="img-fluid" src="http://www.fundosanimais.com/Imagens/par-leoes.jpg">
-                                    </div>
-                                </div>
-                                <div class="col-10 ml-1 row">
-                                    <div class="card card-outline-warning">
-                                        <div class="card-blockquote">
-                                            <h3 class="card-header small">
-                                                {{comentario.usuario.nome}}
-                                                <span class="float-right">{{comentario.dtCadastro | date : "dd/MM/yyyy a"}}</span>
-                                            </h3>
-                                            <div class="card-block">
-                                                <p class="card-text">
-                                                    asdfasdfasfasdsdafadsfsadfsadffffffffffffffffffffffffffffffffffffffffffffffffasdfasfaasdfasdf
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row col-12">
-                <div ng-if="logado" class="col-6 mb-4 mt-3 mb-3 float-right">
-                    <form name="formComentario" ng-submit="inserirComentario()">
-                        <div>
-                            <div class="form-group">
-                                <textarea class="form-control" name="textoComentario" ng-model="comentarioInserido.texto" id="" cols="20" rows="5"></textarea>
-                            </div>
-                            <div>
-                                <input type="submit" class="btn btn-outline-success float-right" value="Comentar" ng-disabled="comentarioInserido.texto.length === 0 || comentarioInserido.texto.length === null || comentarioInserido.texto.length === undefined">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
         </div>
     </div>
 </body>

@@ -1,6 +1,6 @@
 angular.module('animais').controller('UsuarioController', UsuarioController);
 
-function UsuarioController($scope, requisicoesService, clearMaskService, growl, $anchorScroll, fileUploadService) {
+function UsuarioController($scope, requisicoesService, routeService, clearMaskService, feedbackService, fileUploadService) {
 
     var files = event.target.files;
     var reader = new FileReader();
@@ -32,16 +32,15 @@ function UsuarioController($scope, requisicoesService, clearMaskService, growl, 
     $scope.cadastrarUsuario = function () {
         if (validarCamposVazios()) {
             if (!validarCpf()) {
-                growl.error('CPF inválido');
+                feedbackService.error('CPF inválido');
             } else if (!validarTelefone()) {
-                growl.error('Telefone inválido');
+                feedbackService.error('Telefone inválido');
             } else {
                 if (validarSenhasIguais()) {
                     clearMasks();
                     cadastrarNovoUsuario();
                 } else {
-                    growl.error('Senhas diferentes');
-                    $anchorScroll();
+                    feedbackService.error('Senhas diferentes');
                 }
             }
         }
@@ -61,19 +60,19 @@ function UsuarioController($scope, requisicoesService, clearMaskService, growl, 
         var email = $scope.usuario.email === '';
         var senhaConfirmacao = $scope.usuario.senhaConfirmacao === '';
         if (nome) {
-            growl.error('O campo nome é obrigatório');
+            feedbackService.error('O campo nome é obrigatório');
         } else if (cpf) {
-            growl.error('O campo cpf é obrigatório');
+            feedbackService.error('O campo cpf é obrigatório');
         } else if (telefone) {
-            growl.error('O campo telefone é obrigatório');
+            feedbackService.error('O campo telefone é obrigatório');
         } else if (email) {
-            growl.error('O campo email é obrigatório');
+            feedbackService.error('O campo email é obrigatório');
         } else if (usuario) {
-            growl.error('O campo usuário é obrigatório');
+            feedbackService.error('O campo usuário é obrigatório');
         } else if (senha) {
-            growl.error('O campo senha é obrigatório');
+            feedbackService.error('O campo senha é obrigatório');
         } else if (senhaConfirmacao) {
-            growl.error('O campo senha de confirmação é obrigatório');
+            feedbackService.error('O campo senha de confirmação é obrigatório');
         }
         return !nome && !cpf && !telefone && !usuario && !senha && !email && !senhaConfirmacao;
     }
@@ -98,10 +97,11 @@ function UsuarioController($scope, requisicoesService, clearMaskService, growl, 
             .then(function (response) {
                 if (response.data !== null) {
                     if (response.data !== '') {
-                        growl.success('Usuário ' + $scope.usuario.usuario + ' foi cadastrado com sucesso!');
+                        feedbackService.success('Usuário ' + $scope.usuario.usuario + ' foi cadastrado com sucesso!');
                         $scope.usuario = null;
-                    } else {
-                        growl.error('Falha no cadastro do usúario ' + $scope.usuario.usuario);
+                        routeService.mudarRotaTimeout('/animais/login');
+                } else {
+                        feedbackService.error('Falha no cadastro do usúario ' + $scope.usuario.usuario);
                     }
                 }
             }, function (error) {

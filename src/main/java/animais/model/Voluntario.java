@@ -30,4 +30,31 @@ public class Voluntario {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private ArrayList<String> categorias;
 	
+	public long getId() {
+		return id;
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	
+	public void setUsuario(long id) {
+		this.usuario.setId(id);
+	}
+	
+	public void setCategorias(ArrayList<String> categorias) {
+		this.categorias = categorias;
+	}
+	
+	public ArrayList<String> getCategorias() {
+		return categorias;
+	}
+	
+	public void setInteresse(String interesse) {
+		this.interesse = interesse;
+	}
+	
+	public String getInteresse() {
+		return interesse;
+	}
 }

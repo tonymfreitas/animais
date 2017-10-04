@@ -10,7 +10,7 @@ return {
   },
   responseError: function (response) {
     if (response.status === 401 || response.status === 403) {
-      growl.error('Usuário não autenticado, será redirecionado para a tela de login');
+      growl.error('Usuário não autenticado');
       $timeout(function () {
         $location.path('/animais/login');
       }, 5000);

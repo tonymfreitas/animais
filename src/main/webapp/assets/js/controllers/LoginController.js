@@ -1,6 +1,6 @@
 angular.module('animais').controller('LoginController', LoginController);
 
-function LoginController($scope, requisicoesService, bauService, growl, $location) {
+function LoginController($scope, requisicoesService, bauService, $location, feedbackService) {
 
     function init() {
         $scope.usuario = {
@@ -21,7 +21,7 @@ function LoginController($scope, requisicoesService, bauService, growl, $locatio
         requisicoesService.autenticarUsuario($scope.usuario)
             .then(function (response) {
                 if (response.data === null || response.data === '') {
-                    growl.error('Usuário ou senha inválidos!');
+                    feedbackService.error('Usuário ou senha inválidos!');
                 } else {
                     $scope.$emit('usuarioLogado', { logado: true, usuario: response.data.usuario, id: response.data.id });
                     localStorage.setItem('token', response.data.senha);
@@ -45,9 +45,9 @@ function LoginController($scope, requisicoesService, bauService, growl, $locatio
         var userEmpty = $scope.usuario.usuario === '';
         var passwordEmpty = $scope.usuario.senha === '';
         if(userEmpty) {
-            growl.error('O campo usuário é obrigatório');
+            feedbackService.error('O campo usuário é obrigatório');
         } else if(passwordEmpty) {
-            growl.error('O campo senha é obrigatório');
+            feedbackService.error('O campo senha é obrigatório');
         }
         return userEmpty || passwordEmpty;
     }

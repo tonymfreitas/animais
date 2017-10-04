@@ -1,6 +1,6 @@
 angular.module('animais').controller('IndexController', IndexController);
 
-function IndexController($scope, growl, bauService, logoutService, requisicoesService, $location) {
+function IndexController($scope, feedbackService, bauService, logoutService, requisicoesService, $location) {
 
     function init() {
         $scope.logado = false;
@@ -38,7 +38,7 @@ function IndexController($scope, growl, bauService, logoutService, requisicoesSe
         requisicoesService.consultarVoluntario(usuario)
             .then(function (response) {
                 if (response.data !== null && response.data !== '') {
-                    growl.info('Este usuário ja é um voluntário!!');
+                    feedbackService.info('Este usuário ja é um voluntário!!');
                 } else {
                    $location.path('/animais/cadastrar-voluntario');
                 }

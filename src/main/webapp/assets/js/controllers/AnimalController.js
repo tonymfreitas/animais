@@ -1,6 +1,6 @@
 angular.module('animais').controller('AnimalController', AnimalController);
 
-function AnimalController($scope, requisicoesService, growl, fileUploadService, bauService) {
+function AnimalController($scope, requisicoesService, feedbackService , fileUploadService, bauService) {
 
     var files = event.target.files;
     var reader = new FileReader();
@@ -47,7 +47,7 @@ function AnimalController($scope, requisicoesService, growl, fileUploadService, 
                 }
             }
         } else {
-            growl.error('O campo peso deve ser numérico');
+            feedbackService.error('O campo peso deve ser numérico');
         }
     }
 
@@ -55,12 +55,12 @@ function AnimalController($scope, requisicoesService, growl, fileUploadService, 
         requisicoesService.novoAnimal(formData, config)
             .then(function (response) {
                 if (response !== null && response !== '') {
-                    growl.success($scope.animal.nome + ' foi cadastrado com sucesso');
+                    feedbackService.success($scope.animal.nome + ' foi cadastrado com sucesso');
                     $scope.animal = null;
                     $scope.animal.myFile = null;
                     $scope.fotoPreview = null;
                 } else {
-                    growl.error('Falha ao cadastrar um amigo');
+                    feedbackService.error('Falha ao cadastrar um amigo');
                 }
             }, function (error) {
                 console.log(error);
@@ -75,7 +75,7 @@ function AnimalController($scope, requisicoesService, growl, fileUploadService, 
         var camposVazios = isEmpytPropetsyObj($scope.animal);
         var campo;
         for (campo in camposVazios) {
-            growl.error('O campo ' + camposVazios[campo] + "  deve ser preenchido");
+            feedbackService.error('O campo ' + camposVazios[campo] + "  deve ser preenchido");
             break;
         }
         return camposVazios.length === 0 ? true : false;
@@ -83,7 +83,7 @@ function AnimalController($scope, requisicoesService, growl, fileUploadService, 
 
     function validarCampoFoto() {
         if ($scope.myFile === undefined) {
-            growl.error('O campo foto deve ser preenchido');
+            feedbackService.error('O campo foto deve ser preenchido');
         }
         return $scope.myFile === undefined ? true : false;
     }

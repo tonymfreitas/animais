@@ -23,6 +23,10 @@
             return $http.post(urlConfig.baseUrl + '/voluntario/consultar', usuario);
         };
 
+        var _listarVoluntarios = function() {
+            return $http.get(urlConfig.baseUrl + '/voluntario/listar');
+        };
+
         var _novoAnimal = function(animal, config) {
             return $http.post(urlConfig.baseUrl + '/animal/novo', animal, config);
         };
@@ -53,6 +57,7 @@
             listarInformacoesUsuario: _listarInformacoesUsuario,
             novoVoluntario: _novoVoluntario,
             consultarVoluntario: _consultarVoluntario,
+            listarVoluntarios: _listarVoluntarios,
             novoAnimal: _novoAnimal,
             listarTodosAnimais: _listarTodosAnimais,
             buscarTutorAnimal:  _buscarTutorAnimal,

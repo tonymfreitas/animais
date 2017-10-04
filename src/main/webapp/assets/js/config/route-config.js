@@ -1,45 +1,58 @@
 angular.module('animais')
-.config(interceptor)
-.config(configurarRotas);
+    .config(interceptor)
+    .config(configurarRotas);
 
 function configurarRotas($routeProvider) {
-    
+
     $routeProvider
 
-    .when('/animais', {
-        templateUrl: '/assets/views/principal.html',
-        controller: 'PrincipalController'
-    })
+        .when('/animais', {
+            templateUrl: '/assets/views/principal.html',
+            controller: 'PrincipalController'
+        })
 
-    .when('/animais/cadastrar', {
-        templateUrl: 'assets/views/animais/cadastro.html',
-        controller: 'AnimalController',
-        authorize: true
-    })
-    
-    .when('/animais/detalhes', {
-        templateUrl: 'assets/views/animais/detalhes.html',
-        controller: 'AnimalDetalheController'
-    })
+        .when('/animais/cadastrar', {
+            templateUrl: 'assets/views/animais/cadastro.html',
+            controller: 'AnimalController',
+            authorize: true
+        })
 
-    .when('/animais/login', {
-        templateUrl: 'assets/views/login.html',
-        controller: 'LoginController'
-    })
+        .when('/animais/detalhes', {
+            templateUrl: 'assets/views/animais/detalhes.html',
+            controller: 'AnimalDetalheController'
+        })
 
-    .when('/animais/cadastrar-usuario',{
-        templateUrl: 'assets/views/cadastro-usuario.html',
-        controller: 'UsuarioController'
-    })
+        .when('/animais/login', {
+            templateUrl: 'assets/views/login.html',
+            controller: 'LoginController'
+        })
 
-    .when('/animais/cadastrar-voluntario', {
-        templateUrl: 'assets/views/cadastro-voluntario.html',
-        controller: 'VoluntarioController',
-        authorize: true
-    })
-    ;
+        .when('/animais/cadastrar-usuario', {
+            templateUrl: 'assets/views/usuario/cadastro.html',
+            controller: 'UsuarioController'
+        })
 
-    $routeProvider.otherwise({redirectTo: '/animais'});
+        .when('/animais/cadastrar-voluntario', {
+            templateUrl: 'assets/views/voluntario/cadastro.html',
+            controller: 'VoluntarioController',
+            authorize: true
+        })
+
+        .when('/animais/voluntarios', {
+            templateUrl: 'assets/views/voluntario/voluntarios.html',
+            controller: 'ListaVoluntarioController',
+            authorize: true
+        })
+
+        .when('/animais/voluntario/detalhe', {
+            templateUrl: 'assets/views/voluntario/detalhe.html',
+            controller: 'VoluntarioDetalheController',
+            authorize: true
+        })
+
+        ;
+
+    $routeProvider.otherwise({ redirectTo: '/animais' });
 
 }
 
