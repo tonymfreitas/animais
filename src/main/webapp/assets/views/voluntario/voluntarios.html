@@ -1,14 +1,20 @@
 <div class="row">
-    <h2>Voluntários</h2>
-    <br>
+    <div growl class="col-6 offset-md-3"></div>
 </div>
-<div class="row text-center">
-    <div class="card mb-3 ml-2" style="width: 20rem;" ng-repeat="voluntario in voluntarios">
-        <img class="w-75 mx-auto card-img-top img-fluid rounded-circle" src="data:image/png;base64,{{voluntario.usuario.foto}}" alt="">
-        <div class="card-block">
-            <h4 class="card-title">{{voluntario.usuario.nome}}</h4>
-            <p class="card-text">{{voluntario.interesse}}</p>
-            <a href="" class="btn btn-outline-primary" ng-click="detalharVoluntario(voluntario)">Detalhes</a>
+<div class="row">
+    <div class="col-12">
+        <h2>Voluntários</h2>
+        <hr>
+        <a href="" class="btn btn-outline-primary float-right" ng-click="consultarVoluntarioExistente()">Seja um voluntário</a>
+    </div>
+    <div class="row text-center mt-4">
+        <div class="card card-outline-primary mb-3 ml-2" style="width: 20rem;" ng-repeat="voluntario in voluntarios">
+            <img class="w-75 mx-auto card-img-top img-fluid rounded-circle mt-3" src="data:image/png;base64,{{voluntario.usuario.foto}}" alt="">
+            <div class="card-block">
+                <h4 class="card-title">{{voluntario.usuario.nome}}</h4>
+                <p class="card-text">{{voluntario.interesse}}</p>
+                <a href="" class="btn btn-outline-primary" ng-click="detalharVoluntario(voluntario)">Detalhes</a>
+            </div>
         </div>
     </div>
 </div>

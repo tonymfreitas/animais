@@ -51,6 +51,10 @@
             return $http.post(urlConfig.baseUrl + '/animal/consultar', animal);
         };
 
+        var _enviarEmailUsuario = function() {
+            return $http.get(urlConfig.baseUrl + '/email/enviar');
+        }
+
         return {
             novoUsuario: _novoUsuario,
             autenticarUsuario: _autenticarUsuario,
@@ -63,7 +67,8 @@
             buscarTutorAnimal:  _buscarTutorAnimal,
             inserirComentario: _inserirComentario,
             listarComentarios: _listarComentarios,
-            consultarAnimal: _consultarAnimal
+            consultarAnimal: _consultarAnimal,
+            enviarEmailUsuario: _enviarEmailUsuario
         };  
     }
 })();

@@ -20,6 +20,7 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 		final String CAMINHO_CONSULTAR_VOLUNTARIO = "/services/voluntario/consultar";
 		final String CAMINHO_CONSULTAR_TUTOR_ANIMAL = "/services/animal/buscar-tutor";
 		final String CAMINHO_LISTAR_COMENTARIOS = "/services/comentario/listar-comentarios";
+		final String CAMINHO_ENVIAR_EMAIL = "/services/email/enviar";
 
 		boolean caminhoNovoUsuario = request.getRequestURI().equals(CAMINHO_NOVO_USUARIO);
 		boolean caminhoAutenticarUsuario = request.getRequestURI().equals(CAMINHO_AUTENTICAR_USUARIO);
@@ -27,6 +28,7 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 		boolean caminhoConsultarVoluntario = request.getRequestURI().equals(CAMINHO_CONSULTAR_VOLUNTARIO); 
 		boolean caminhoConsultarTutorAnimal = request.getRequestURI().equals(CAMINHO_CONSULTAR_TUTOR_ANIMAL);
 		boolean caminhoListarComentarios = request.getRequestURI().equals(CAMINHO_LISTAR_COMENTARIOS);
+		boolean caminhoEnviarEmail = request.getRequestURI().equals(CAMINHO_ENVIAR_EMAIL);
 		
 		String header = request.getHeader("Authorization");
 
@@ -45,7 +47,8 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 					!caminhoListarAnimais && 
 					!caminhoConsultarVoluntario &&
 					!caminhoConsultarTutorAnimal &&
-					!caminhoListarComentarios;
+					!caminhoListarComentarios &&
+					!caminhoEnviarEmail;
 			if (caminhosLivres) {
 				response.sendError(response.SC_UNAUTHORIZED, "Usuário não autenticado");
 				return false;

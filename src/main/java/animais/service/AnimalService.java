@@ -2,7 +2,6 @@ package animais.service;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -23,7 +22,6 @@ import com.google.gson.Gson;
 
 import animais.model.Usuario;
 import animais.model.animal.Animal;
-import animais.model.animal.AnimalComentario;
 import animais.model.base.IAnimalDAO;
 import animais.model.base.IUsuarioDAO;
 

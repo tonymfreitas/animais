@@ -86,7 +86,7 @@ function UsuarioController($scope, requisicoesService, routeService, clearMaskSe
     }
 
     function cadastrarNovoUsuario() {
-         var config = {
+        var config = {
             transformRequest: angular.identity,
             headers: {
                 'Content-Type': undefined
@@ -97,13 +97,23 @@ function UsuarioController($scope, requisicoesService, routeService, clearMaskSe
             .then(function (response) {
                 if (response.data !== null) {
                     if (response.data !== '') {
+                        enviarEmailUsuario();
                         feedbackService.success('Usuário ' + $scope.usuario.usuario + ' foi cadastrado com sucesso!');
                         $scope.usuario = null;
                         routeService.mudarRotaTimeout('/animais/login');
-                } else {
+                    } else {
                         feedbackService.error('Falha no cadastro do usúario ' + $scope.usuario.usuario);
                     }
                 }
+            }, function (error) {
+                console.log(error);
+            });
+    }
+
+    function enviarEmailUsuario() {
+        requisicoesService.enviarEmailUsuario()
+            .then(function (response) {
+                console.log(response.data);
             }, function (error) {
                 console.log(error);
             });
