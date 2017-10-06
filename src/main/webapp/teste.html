@@ -29,34 +29,11 @@
 
 <body>
     <div class="container">
-        <div class="row">
-            <div growl class="col-6 offset-md-3"></div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <h2>Voluntários</h2>
-                <hr>
-                <a href="" class="btn btn-outline-info float-right" ng-click="consultarVoluntarioExistente()">Seja um voluntário</a>
+        <div class="row" ng-if="">
+            <div class="text-primary text-center col-12 card card-outline-primary pt-5 pb-5">
+                <h2>NENHUM VOLUNTÁRIO CADASTRADO</h2>
             </div>
         </div>
-        <div class="row text-center mt-3">
-                <div class="card card-outline-info mb-3 ml-2" style="width: 20rem;" ng-repeat="voluntario in voluntarios">
-                    <img class="w-75 mx-auto card-img-top img-fluid rounded-circle" src="data:image/png;base64,{{voluntario.usuario.foto}}" alt="">
-                    <div class="card-block">
-                        <h4 class="card-title">{{voluntario.usuario.nome}}</h4>
-                        <p class="card-text">{{voluntario.interesse}}</p>
-                        <a href="" class="btn btn-outline-info" ng-click="detalharVoluntario(voluntario)">Detalhes</a>
-                    </div>
-                </div>
-                <div class="card mb-3 ml-2" style="width: 20rem;" ng-repeat="voluntario in voluntarios">
-                    <img class="w-75 mx-auto card-img-top img-fluid rounded-circle" src="data:image/png;base64,{{voluntario.usuario.foto}}" alt="">
-                    <div class="card-block">
-                        <h4 class="card-title">{{voluntario.usuario.nome}}</h4>
-                        <p class="card-text">{{voluntario.interesse}}</p>
-                        <a href="" class="btn btn-outline-primary" ng-click="detalharVoluntario(voluntario)">Detalhes</a>
-                    </div>
-                </div>
-            </div>
     </div>
 </body>
 

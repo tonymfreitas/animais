@@ -97,7 +97,6 @@ function UsuarioController($scope, requisicoesService, routeService, clearMaskSe
             .then(function (response) {
                 if (response.data !== null) {
                     if (response.data !== '') {
-                        enviarEmailUsuario();
                         feedbackService.success('Usuário ' + $scope.usuario.usuario + ' foi cadastrado com sucesso!');
                         $scope.usuario = null;
                         routeService.mudarRotaTimeout('/animais/login');
@@ -105,15 +104,6 @@ function UsuarioController($scope, requisicoesService, routeService, clearMaskSe
                         feedbackService.error('Falha no cadastro do usúario ' + $scope.usuario.usuario);
                     }
                 }
-            }, function (error) {
-                console.log(error);
-            });
-    }
-
-    function enviarEmailUsuario() {
-        requisicoesService.enviarEmailUsuario()
-            .then(function (response) {
-                console.log(response.data);
             }, function (error) {
                 console.log(error);
             });

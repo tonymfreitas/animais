@@ -22,6 +22,11 @@ function configurarRotas($routeProvider) {
             controller: 'AnimalDetalheController'
         })
 
+        .when('/animais/categorias', {
+            templateUrl: 'assets/views/animais/categorias.html',
+            controller: 'AnimalCategoriaController'
+        })
+
         .when('/animais/login', {
             templateUrl: 'assets/views/login.html',
             controller: 'LoginController'
@@ -40,14 +45,12 @@ function configurarRotas($routeProvider) {
 
         .when('/animais/voluntarios', {
             templateUrl: 'assets/views/voluntario/voluntarios.html',
-            controller: 'ListaVoluntarioController',
-            authorize: true
+            controller: 'ListaVoluntarioController'
         })
 
         .when('/animais/voluntario/detalhe', {
             templateUrl: 'assets/views/voluntario/detalhe.html',
-            controller: 'VoluntarioDetalheController',
-            authorize: true
+            controller: 'VoluntarioDetalheController'
         })
 
         ;

@@ -30,7 +30,7 @@ public class ApplicationContextConfig {
 		dataSource.setDriverClassName("org.postgresql.Driver");
 		dataSource.setUrl("jdbc:postgresql://localhost:5432/animais");
 		dataSource.setUsername("postgres");
-		dataSource.setPassword("postgres");
+		dataSource.setPassword("aula321");
 		return dataSource;
 	}
 
